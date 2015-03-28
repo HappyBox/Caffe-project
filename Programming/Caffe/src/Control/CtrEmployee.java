@@ -3,10 +3,20 @@ import Model.Employee;
 
 public class CtrEmployee {
 	
-	public static void main(String[] args) {
+	
+	
+	
+	public Employee searchByPassword(String text) {
 		// TODO Auto-generated method stub
 		Employee employee = new Employee();
-		employee.show();
+		return employee;
 	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//Employee employee = new Employee();
+		//employee.show();
+	}
+
+	
 
 }

@@ -2,9 +2,9 @@ package Model;
 
 public class Employee {
 
-	public void show()
+	public String getPassword()
 	{
-		System.out.println("Loaded");
+		return "12345";
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
