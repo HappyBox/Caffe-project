@@ -38,6 +38,9 @@ public class Start extends JFrame {
 				int code = e.getKeyCode();
 				if(code == 10)
 				{
+					Table table = new Table();
+					table.setVisible(true);
+					table.setLocationRelativeTo(null);
 					CtrEmployee ctrEmployee = new CtrEmployee();
 					Employee employee = ctrEmployee.searchByPassword(password.getText());
 					if(employee.getPassword().intern() == password.getText().intern())
