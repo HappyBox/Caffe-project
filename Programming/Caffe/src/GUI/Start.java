@@ -38,20 +38,33 @@ public class Start extends JFrame {
 				int code = e.getKeyCode();
 				if(code == 10)
 				{
-					Table table = new Table();
-					table.setVisible(true);
-					table.setLocationRelativeTo(null);
-					CtrEmployee ctrEmployee = new CtrEmployee();
-					Employee employee = ctrEmployee.searchByPassword(password.getText());
-					if(employee.getPassword().intern() == password.getText().intern())
+					String text = password.getText();
+					System.out.println(text);
+					if(text.intern() == "1")
 					{
-						System.out.println("Logged on");
-						lblError.setText("");
+						
 					}
-					else
+					if(text.intern() == "2")
 					{
-						lblError.setText("Wrong password");
-						System.out.println(password.getText()+"*");
+						Table table = new Table();
+						table.setVisible(true);
+						table.setLocationRelativeTo(null);
+						CtrEmployee ctrEmployee = new CtrEmployee();
+						Employee employee = ctrEmployee.searchByPassword(password.getText());
+						if(employee.getPassword().intern() == password.getText().intern())
+						{
+							System.out.println("Logged on");
+							lblError.setText("");
+						}
+						else
+						{
+							lblError.setText("Wrong password");
+							System.out.println(password.getText()+"*");
+						}
+					}
+					if(text.intern() == "3")
+					{
+						
 					}
 				}
 			}
