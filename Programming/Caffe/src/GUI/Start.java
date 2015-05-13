@@ -1,15 +1,15 @@
 package GUI;
-import Control.CtrEmployee;
-import Model.Employee;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
+//import Control.CtrEmployee;
 import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+
+import Control.CtrEmployee;
+import Model.Employee;
 
 public class Start extends JFrame {
 	private JPasswordField password;
@@ -64,7 +64,10 @@ public class Start extends JFrame {
 					}
 					if(text.intern() == "3")
 					{
-						
+						ManagerGUI manager = new ManagerGUI();
+						manager.setVisible(true);
+						manager.setLocationRelativeTo(null);
+					
 					}
 				}
 			}
