@@ -27,7 +27,7 @@ public class ManageAEmployee extends JFrame{
 	private JLabel lblError;
 	public ManageAEmployee() {
 
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
 		this.setBounds(100, 100, 319, 204);
 		this.setTitle("Manage a employee");
 		
