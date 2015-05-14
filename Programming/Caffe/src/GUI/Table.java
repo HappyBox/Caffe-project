@@ -10,12 +10,22 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
 
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 public class Table extends JFrame {
 	private JButton btnTable1;
 	private JButton btnTable2;
 	private JButton btnTable3;
-	public Table() {
-		
+	private String customerPh;
+	private JButton btnBack;
+	private Table table;
+	private ArrayList<String> tableList1 = new ArrayList();
+	private ArrayList<String> tableList2 = new ArrayList();
+	private ArrayList<String> tableList3 = new ArrayList();
+	private CtrTable ctrTable;
+	public Table(CtrTable ctrTable) {
+		this.ctrTable = ctrTable;
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setBounds(100, 100, 400, 200);
 		this.setTitle("Table");
@@ -31,10 +41,12 @@ public class Table extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				CtrTable table = new CtrTable(1);
-				Product product = new Product(table);
-				product.setVisible(true);
-				product.setLocationRelativeTo(null);
+				ctrTable.setTable(1);
+				Menu menu = new Menu(ctrTable, 1);
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				menu.setWindow(menu);
+				menu.setList(tableList1);
 			}});
 		panel.add(btnTable1);
 		
@@ -45,10 +57,12 @@ public class Table extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				CtrTable table = new CtrTable(2);
-				Product product = new Product(table);
-				product.setVisible(true);
-				product.setLocationRelativeTo(null);
+				ctrTable.setTable(2);
+				Menu menu = new Menu(ctrTable, 2);
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				menu.setWindow(menu);
+				menu.setList(tableList2);
 			}});
 		panel.add(btnTable2);
 		
@@ -59,12 +73,31 @@ public class Table extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				CtrTable table = new CtrTable(3);
-				Product product = new Product(table);
-				product.setVisible(true);
-				product.setLocationRelativeTo(null);
+				ctrTable.setTable(3);
+				Menu menu = new Menu(ctrTable, 3);
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				menu.setWindow(menu);
+				menu.setList(tableList3);
 			}});
 		panel.add(btnTable3);
 		
+		btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				table.dispose();
+			}
+		});
+		btnBack.setBounds(285, 128, 89, 23);
+		panel.add(btnBack);
+		
+	}
+	public void setTable(Table table)
+	{
+		this.table = table;
+	}
+	public void setPhone(String phone)
+	{
+		customerPh = phone;
 	}
 }

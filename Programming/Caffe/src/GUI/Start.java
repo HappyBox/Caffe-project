@@ -46,21 +46,9 @@ public class Start extends JFrame {
 					}
 					if(text.intern() == "2")
 					{
-						Table table = new Table();
-						table.setVisible(true);
-						table.setLocationRelativeTo(null);
-						CtrEmployee ctrEmployee = new CtrEmployee();
-						Employee employee = ctrEmployee.searchByPassword(password.getText());
-						if(employee.getPassword().intern() == password.getText().intern())
-						{
-							System.out.println("Logged on");
-							lblError.setText("");
-						}
-						else
-						{
-							lblError.setText("Wrong password");
-							System.out.println(password.getText()+"*");
-						}
+						CustomerReg cusReg = new CustomerReg();
+						cusReg.setVisible(true);
+						cusReg.setLocationRelativeTo(null);
 					}
 					if(text.intern() == "3")
 					{
