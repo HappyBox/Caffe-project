@@ -26,7 +26,7 @@ public class DBTPU implements IFDBTpu{
 		int rc=-1;
 
 		String query="UPDATE TPU SET "+
-	"tpu_price ='"+ TpuObj.getPrice()+"', " ;
+	"tpu_price ='"+ TpuObj.getPrice()+"' " ;
                 System.out.println("Update query:" + query);
   		try{ // update TPU
 	 		Statement stmt = con.createStatement();
@@ -40,7 +40,6 @@ public class DBTPU implements IFDBTpu{
 	  	}
 		return(rc);
 	}
-	
 	
 	private TPU singleWhere(String wClause)
 	{

@@ -47,7 +47,7 @@ public class TransportPriceUpdate extends JFrame{
 		btnUpdate.setBounds(190, 49, 106, 38);
 		panel.add(btnUpdate);
 		
-		final JLabel lblError = new JLabel("");
+		 final JLabel lblError = new JLabel("");
 		lblError.setBounds(6, 85, 305, 38);
 		panel.add(lblError);
 		
