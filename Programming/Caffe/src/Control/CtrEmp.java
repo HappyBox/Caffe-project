@@ -15,21 +15,23 @@ public class CtrEmp {
         
     }
   
-      public Employee findByPhone(String e_phoneno)
+      public Employee findByPhone(String ePhone_no)
     {
         IFDBEmp dbEmp = new DBEmployee();
-        return dbEmp.searchEmployeee_phoneno( e_phoneno, true);
+        return dbEmp.searchEmployeeePhone_no( ePhone_no, true);
     }
-      public int updateEmp(String e_password, String e_name, String e_order, String e_address, String e_phoneno )
+      public int updateEmp(String eName, String eAddress, String eCity, String ePhone_no,String ePassword, String eEmail, String eAccNum )
       {
           IFDBEmp dbEmp = new DBEmployee();
           Employee Emp = new Employee();
-          Emp.setPassword(e_password);
-          Emp.setName(e_name);
-          Emp.setOrder(e_order);
-          Emp.setAddress(e_address);
-          Emp.setPhoneno(e_phoneno);
-          
+          Emp.setName(eName);
+          Emp.setAddress(eAddress);
+          Emp.setCity(eCity);
+          Emp.setPhone_no(ePhone_no);
+          Emp.setPassword(ePassword);
+          Emp.setEmail(eEmail);
+          Emp.setAccNum(eAccNum);
+
           return  dbEmp.updateEmployee(Emp);
           
           
@@ -40,9 +42,9 @@ public class CtrEmp {
            dbEmp.insertEmployee(EmpObj);
       }
     
-      public void delete(String e_phoneno)
+      public void delete(String ePhone_no)
       {
     	  IFDBEmp dbEmp = new DBEmployee();
-    	  dbEmp.delete(e_phoneno);
+    	  dbEmp.delete(ePhone_no);
       }
 }

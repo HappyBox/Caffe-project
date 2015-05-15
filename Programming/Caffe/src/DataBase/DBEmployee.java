@@ -15,19 +15,23 @@ public class DBEmployee implements IFDBEmp{
       con = DbConnection.getInstance().getDBcon();
     }
   
-  //get one Employee having the e_phoneno
-    public Employee searchEmployeee_phoneno(String e_phoneno, boolean retriveAssociation)
-    {   String wClause = "  e_phoneno = '" + e_phoneno + "'";
+  //get one Employee having the ePhone_no
+    public Employee searchEmployeeePhone_no(String ePhone_no, boolean retriveAssociation)
+    {   String wClause = "  ePhone_no = '" + ePhone_no + "'";
         return singleWhere(wClause, retriveAssociation);
     }
      //insert a new Employee
     public int insertEmployee(Employee Emp)
     {  
        int rc = -1;
-	   String query="INSERT INTO Employee(e_phoneno,e_name,e_address)  VALUES('"+
-       Emp.getPhoneno() + "','" +
-	  		Emp.getName()  + "','"  +
-	  			Emp.getAddress() + "','";
+	   String query="INSERT INTO Employee(eName, eAddress, eCity,ePhone_no, ePassword, eEmail, eAccNum)  VALUES('"+
+			   Emp.getName()  + "','"  +
+			   		Emp.getAddress() + "','" +
+			   			Emp.getCity() + "','" +
+			   				Emp.getPhone_no() + "',' " +
+			   					Emp.getPassword() + "','" +
+			   						Emp.getEmail()+ "','" +
+			   								Emp.getAccNum()  + "','" ;
 
        try{ // insert new Employee
           con.setAutoCommit(false);
@@ -39,7 +43,7 @@ public class DBEmployee implements IFDBEmp{
           con.setAutoCommit(true);
        }//end try
        catch(SQLException ex){
-          System.out.println("Employee ikke oprettet");
+          System.out.println("Employee not inserted");
           System.out.println("Insert exception in Employee db: "+ex);
 	  try{
              rc=-1;
@@ -60,10 +64,14 @@ public class DBEmployee implements IFDBEmp{
 		int rc=-1;
 
 		String query="UPDATE Employee SET "+
-			"e_phoneno='"+ EmpObj.getPhoneno() + "', "+
-		 	  "e_name ='"+ EmpObj.getName()+"', "+
-		 	  "e_address ='"+ EmpObj.getAddress() + "', " +
-		 	  	"WHERE e_phoneno = '"+ EmpObj.getPhoneno() + "'";
+			"eName ='"+ EmpObj.getName()+"', "+
+				"eAddress ='"+ EmpObj.getAddress() + "', " +
+					"eCity ='"+ EmpObj.getCity() + "', " +
+						"ePhone_no='"+ EmpObj.getPhone_no() + "', "+
+							"ePassword='"+ EmpObj.getPassword() + "', "+
+								"eEmail='"+ EmpObj.getEmail() + "', "+
+									"eAccNum='"+ EmpObj.getAccNum() + "', "+				
+										"WHERE ePhone_no = '"+ EmpObj.getPhone_no() + "'";
                 System.out.println("Update query:" + query);
   		try{ // update Employee
 	 		Statement stmt = con.createStatement();
@@ -78,12 +86,12 @@ public class DBEmployee implements IFDBEmp{
 		return(rc);
 	}
 	
-	public int delete(String e_phoneno)
+	public int delete(String ePhone_no)
 	{
                int rc=-1;
 	  
-	  	String query="DELETE FROM Employee WHERE e_phoneno = '" +
-				e_phoneno + "'";
+	  	String query="DELETE FROM Employee WHERE ePhone_no = '" +
+				ePhone_no + "'";
                 System.out.println(query);
 	  	try{ // delete from Employee
 	 		Statement stmt = con.createStatement();
@@ -123,7 +131,7 @@ public class DBEmployee implements IFDBEmp{
 	//method to build the query
 	private String buildQuery(String wClause)
 	{
-	    String query="SELECT e_phoneno, e_name, e_address FROM Employee";
+	    String query="SELECT eName, eAddress, eCity, ePhone_no, ePassword, eEmail, eAccNum FROM Employee";
 		
 		if (wClause.length()>0)
 			query=query+" WHERE "+ wClause;
@@ -134,10 +142,13 @@ public class DBEmployee implements IFDBEmp{
 	private Employee buildEmployee(ResultSet results)
       {   Employee EmpObj = new Employee();
           try{ // the columns from the table Employee  are used
-        	  	EmpObj.setPhoneno(results.getString("e_phoneno"));
-                EmpObj.setName(results.getString("e_name"));
-                EmpObj.setAddress(results.getString("e_address"));
-	  	EmpObj.setPhoneno(results.getString("e_phoneno"));
+        	  EmpObj.setName(results.getString("eName"));
+        	  EmpObj.setAddress(results.getString("eAddress"));
+        	  EmpObj.setCity(results.getString("eCity"));
+        	  EmpObj.setPhone_no(results.getString("ePhone_no"));
+        	  EmpObj.setPassword(results.getString("ePassword"));
+        	  EmpObj.setEmail(results.getString("eEmail"));
+        	  EmpObj.setAccNum(results.getString("eAccNum"));
           }
          catch(Exception e)
          {
@@ -145,7 +156,7 @@ public class DBEmployee implements IFDBEmp{
          }
          return EmpObj;
       }
- 
+	
 }  
     
 
