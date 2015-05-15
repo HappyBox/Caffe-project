@@ -13,22 +13,23 @@ import javax.swing.border.TitledBorder;
 
 import Control.CtrEmp;
 import Model.Employee;
-import javax.swing.JScrollPane;
 
 public class ManageAEmployee extends JFrame{
 	private JTextField textName;
 	private JTextField textAddress;
 	private JTextField textPhone;
+	private JTextField textPassword;
+	private JTextField textOrders;
 	private JButton btnAdd;
 	private JButton btnFind;
 	private JButton btnUpdate;
 	private JButton btnDelete;
 	private CtrEmp CtrEmp = new CtrEmp();
 	private JLabel lblError;
-	public ManageAEmployee() {
+		public ManageAEmployee() {
 
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
-		this.setBounds(100, 100, 319, 204);
+		this.setBounds(100, 100, 319, 290);
 		this.setTitle("Manage a employee");
 		
 		JPanel panel = new JPanel();
@@ -40,7 +41,7 @@ public class ManageAEmployee extends JFrame{
 		panel_1.setToolTipText("");
 		panel_1.setName("");
 		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Employee", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setBounds(6, 6, 307, 170);
+		panel_1.setBounds(6, 6, 307, 256);
 		panel.add(panel_1);
 		
 		JLabel label_1 = new JLabel("Name");
@@ -54,12 +55,30 @@ public class ManageAEmployee extends JFrame{
 		
 		textAddress = new JTextField();
 		textAddress.setColumns(10);
-		textAddress.setBounds(74, 94, 140, 20);
+		textAddress.setBounds(74, 159, 140, 20);
 		panel_1.add(textAddress);
 		
 		JLabel lblAddress = new JLabel("Address");
-		lblAddress.setBounds(10, 94, 65, 20);
+		lblAddress.setBounds(10, 159, 65, 20);
 		panel_1.add(lblAddress);
+		
+		JLabel lblOrders = new JLabel("Orders");
+		lblOrders.setBounds(10, 93, 65, 20);
+		panel_1.add(lblOrders);
+		
+		textOrders = new JTextField();
+		textOrders.setColumns(10);
+		textOrders.setBounds(74, 94, 140, 20);
+		panel_1.add(textOrders);
+		
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setBounds(10, 24, 65, 20);
+		panel_1.add(lblPassword);
+		
+		textPassword = new JTextField();
+		textPassword.setColumns(10);
+		textPassword.setBounds(74, 24, 140, 23);
+		panel_1.add(textPassword);
 		
 		btnFind = new JButton("Find");
 		btnFind.setBounds(212, 60, 89, 23);
@@ -72,9 +91,13 @@ public class ManageAEmployee extends JFrame{
 				{
 					Employee employee = CtrEmp.findByPhone(textPhone.getText());
 					//System.out.println("done");
-					textPhone.setText(employee.getPhoneno());
+					textPassword.setText(employee.getPassword());
 					textName.setText(employee.getName());
+					textOrders.setText(employee.getOrder());
 					textAddress.setText(employee.getAddress());
+					textPhone.setText(employee.getPhoneno());
+					
+					
 					lblError.setText("command completed");
 				}
 				else
@@ -92,12 +115,14 @@ public class ManageAEmployee extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				if(textPhone.getText().length()>0 && textName.getText().length()>0  && textAddress.getText().length()>0)
+				if(textPassword.getText().length()>0 && textName.getText().length()>0  && textOrders.getText().length()>0 &&  textAddress.getText().length()>0 && textPhone.getText().length()>0 )
 				{
 					Employee employee = new Employee();
-					employee.setPhoneno(textPhone.getText());
+					employee.setPassword(textPassword.getText());
 					employee.setName(textName.getText());
+					employee.setOrder(textOrders.getText());
 					employee.setAddress(textAddress.getText());
+					employee.setPhoneno(textPhone.getText());
 					CtrEmp.insertNew(employee);
 					lblError.setText("employee added");
 				}
@@ -113,11 +138,11 @@ public class ManageAEmployee extends JFrame{
 		
 		textPhone = new JTextField();
 		textPhone.setColumns(10);
-		textPhone.setBounds(74, 24, 140, 20);
+		textPhone.setBounds(74, 129, 140, 20);
 		panel_1.add(textPhone);
 		
 		JLabel lblPhoneno = new JLabel("PhoneNo");
-		lblPhoneno.setBounds(10, 24, 65, 20);
+		lblPhoneno.setBounds(10, 129, 65, 20);
 		panel_1.add(lblPhoneno);
 		
 		btnUpdate = new JButton("Update");
@@ -127,9 +152,9 @@ public class ManageAEmployee extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				if(textPhone.getText().length()>0 && textName.getText().length()>0  && textAddress.getText().length()>0 )
+				if(textPassword.getText().length()>0 && textName.getText().length()>0  && textOrders.getText().length()>0 &&  textAddress.getText().length()>0 && textPhone.getText().length()>0 )
 				{
-					CtrEmp.updateEmp(textPhone.getText(), textName.getText(), textAddress.getText());
+					CtrEmp.updateEmp(textPassword.getText(), textName.getText(), textOrders.getText(), textAddress.getText(),textPhone.getText());
 					lblError.setText("employee updated");
 				}
 				else
@@ -150,18 +175,23 @@ public class ManageAEmployee extends JFrame{
 				// TODO Auto-generated method stub
 				if(textPhone.getText().length()>0){
 					CtrEmp.delete(textPhone.getText());
-					
 					lblError.setText("Employee was deleted");
-					textPhone.setText("");
+					textPassword.setText("");
 					textName.setText("");
+					textOrders.setText("");
 					textAddress.setText("");
+					textPhone.setText("");
+					
 
 				}
 				else{
 				lblError.setText("Sorry I couldn't delete employee");
-				textPhone.setText("");
+				textPassword.setText("");
 				textName.setText("");
+				textOrders.setText("");
 				textAddress.setText("");
+				textPhone.setText("");
+				
 
 			}
 		}
@@ -170,7 +200,7 @@ public class ManageAEmployee extends JFrame{
 		panel_1.add(btnDelete);
 		
 		lblError = new JLabel("");
-		lblError.setBounds(0, 116, 214, 48);
+		lblError.setBounds(10, 191, 214, 48);
 		panel_1.add(lblError);
 		
 	}
