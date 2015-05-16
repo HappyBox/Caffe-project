@@ -16,22 +16,28 @@ public class DBEmployee implements IFDBEmp{
     }
   
   //get one Employee having the ePhone_no
-    public Employee searchEmployeeePhone_no(String ePhone_no, boolean retriveAssociation)
-    {   String wClause = "  ePhone_no = '" + ePhone_no + "'";
+    public Employee searchEmployeeePhone_no(String ePhone, boolean retriveAssociation)
+    {   String wClause = "  ePhone = '" + ePhone + "'";
+        return singleWhere(wClause, retriveAssociation);
+    }
+    
+    public Employee searchEmployeePassword(String ePassword, boolean retriveAssociation)
+    {   String wClause = "  ePassword = '" + ePassword + "'";
         return singleWhere(wClause, retriveAssociation);
     }
      //insert a new Employee
     public int insertEmployee(Employee Emp)
     {  
        int rc = -1;
-	   String query="INSERT INTO Employee(eName, eAddress, eCity,ePhone_no, ePassword, eEmail, eAccNum)  VALUES('"+
+	   String query="INSERT INTO Employee(e_id, eName, eAddress, eCity, ePhone, ePassword, eEmail, eAccNum) VALUES('"+
+			   Emp.getid()  + "','"  +
 			   Emp.getName()  + "','"  +
 			   		Emp.getAddress() + "','" +
 			   			Emp.getCity() + "','" +
 			   				Emp.getPhone_no() + "',' " +
 			   					Emp.getPassword() + "','" +
 			   						Emp.getEmail()+ "','" +
-			   								Emp.getAccNum()  + "','" ;
+			   								Emp.getAccNum()  + "')" ;
 
        try{ // insert new Employee
           con.setAutoCommit(false);
@@ -67,11 +73,11 @@ public class DBEmployee implements IFDBEmp{
 			"eName ='"+ EmpObj.getName()+"', "+
 				"eAddress ='"+ EmpObj.getAddress() + "', " +
 					"eCity ='"+ EmpObj.getCity() + "', " +
-						"ePhone_no='"+ EmpObj.getPhone_no() + "', "+
+						"ePhone='"+ EmpObj.getPhone_no() + "', "+
 							"ePassword='"+ EmpObj.getPassword() + "', "+
 								"eEmail='"+ EmpObj.getEmail() + "', "+
 									"eAccNum='"+ EmpObj.getAccNum() + "', "+				
-										"WHERE ePhone_no = '"+ EmpObj.getPhone_no() + "'";
+										"WHERE ePhone = '"+ EmpObj.getPhone_no() + "'";
                 System.out.println("Update query:" + query);
   		try{ // update Employee
 	 		Statement stmt = con.createStatement();
@@ -90,7 +96,7 @@ public class DBEmployee implements IFDBEmp{
 	{
                int rc=-1;
 	  
-	  	String query="DELETE FROM Employee WHERE ePhone_no = '" +
+	  	String query="DELETE FROM Employee WHERE ePhone = '" +
 				ePhone_no + "'";
                 System.out.println(query);
 	  	try{ // delete from Employee
@@ -131,7 +137,7 @@ public class DBEmployee implements IFDBEmp{
 	//method to build the query
 	private String buildQuery(String wClause)
 	{
-	    String query="SELECT eName, eAddress, eCity, ePhone_no, ePassword, eEmail, eAccNum FROM Employee";
+	    String query="SELECT eName, eAddress, eCity, ePhone, ePassword, eEmail, eAccNum FROM Employee";
 		
 		if (wClause.length()>0)
 			query=query+" WHERE "+ wClause;
@@ -145,7 +151,7 @@ public class DBEmployee implements IFDBEmp{
         	  EmpObj.setName(results.getString("eName"));
         	  EmpObj.setAddress(results.getString("eAddress"));
         	  EmpObj.setCity(results.getString("eCity"));
-        	  EmpObj.setPhone_no(results.getString("ePhone_no"));
+        	  EmpObj.setPhone_no(results.getString("ePhone"));
         	  EmpObj.setPassword(results.getString("ePassword"));
         	  EmpObj.setEmail(results.getString("eEmail"));
         	  EmpObj.setAccNum(results.getString("eAccNum"));

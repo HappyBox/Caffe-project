@@ -70,16 +70,24 @@ public class CustomerReg extends JFrame {
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CtrCus ctrCus = new CtrCus();
-				Customer cus = ctrCus.getCustomer("52644522");
-				if (textField.getText().intern() == cus.getPhone().intern())
+				try
 				{
-					ctrTable.addCustomer(cus);
-					Table table = new Table(ctrTable);
-					table.setVisible(true);
-					table.setLocationRelativeTo(null);
-					table.setPhone(textField.getText());
-					table.setTable(table);													// to dispose window
+					Customer cus = ctrCus.findByPhone(textField.getText());
+					if (textField.getText().intern() == cus.getPhone().intern())
+					{
+						ctrTable.addCustomer(cus);
+						Table table = new Table(ctrTable);
+						table.setVisible(true);
+						table.setLocationRelativeTo(null);
+						table.setPhone(textField.getText());
+						table.setTable(table);													// to dispose window
+					}
 				}
+				catch(Exception as)
+				{
+					label.setText("customer was not found");
+				}
+				
 			}
 		});
 		btnContinue.setBounds(162, 10, 89, 23);

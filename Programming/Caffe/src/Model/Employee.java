@@ -70,6 +70,10 @@ public Employee() {
     
    
     //get method
+    public int getid()
+    {
+    	return Integer.parseInt(ePhone_no);
+    }
     public String getName()
     {
         return eName;

@@ -4,6 +4,8 @@ import Model.Employee;
 public interface IFDBEmp {
     // find a Employee by phone
     public Employee searchEmployeeePhone_no( String ePhone_no, boolean retriveAssociation);
+    // find by password
+    public Employee searchEmployeePassword(String ePassword, boolean retriveAssociation);
     //insert a new Employee
     public int insertEmployee(Employee Emp);
     //update information about an Employee

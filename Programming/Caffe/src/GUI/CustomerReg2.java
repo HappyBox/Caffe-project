@@ -9,6 +9,10 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
+import Control.CtrCus;
+import Model.Customer;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -82,6 +86,19 @@ public class CustomerReg2 extends JFrame {
 		btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(name.getText().length() > 0 && address.getText().length() > 0 && phone.getText().length() > 0)
+				{
+					CtrCus ctrCus = new CtrCus();
+					int x = ctrCus.createCustomer(name.getText(), address.getText(), phone.getText());
+					if (x != -1)
+					{
+						label.setText("customer added");
+					}
+				}
+				else
+				{
+					label.setText("fill all fiels");
+				}
 			}
 		});
 		btnAdd.setBounds(162, 7, 89, 23);
@@ -99,6 +116,18 @@ public class CustomerReg2 extends JFrame {
 		btnFind = new JButton("Find");
 		btnFind.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(phone.getText().length() > 0)
+				{
+					CtrCus ctrCus = new CtrCus();
+					Customer cus = ctrCus.findCustomer(phone.getText());
+					label.setText("here you go");
+					name.setText(cus.getName());
+					address.setText(cus.getAddress());
+				}
+				else
+				{
+					label.setText("fill phone field");
+				}
 			}
 		});
 		btnFind.setBounds(162, 32, 89, 23);
@@ -107,6 +136,19 @@ public class CustomerReg2 extends JFrame {
 		btnUpdate = new JButton("Update");
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(name.getText().length() > 0 && address.getText().length() > 0 && phone.getText().length() > 0)
+				{
+					CtrCus ctrCus = new CtrCus();
+					int x = ctrCus.updateCustomer(name.getText(), address.getText(), phone.getText());
+					if (x != -1)
+					{
+						label.setText("customer updated");
+					}
+				}
+				else
+				{
+					label.setText("fill all fiels");
+				}
 			}
 		});
 		btnUpdate.setBounds(162, 57, 89, 23);

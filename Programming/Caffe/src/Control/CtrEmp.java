@@ -20,6 +20,11 @@ public class CtrEmp {
         IFDBEmp dbEmp = new DBEmployee();
         return dbEmp.searchEmployeeePhone_no( ePhone_no, true);
     }
+	  public Employee findByPassword(String ePassword)
+	  {
+	      IFDBEmp dbEmp = new DBEmployee();
+	      return dbEmp.searchEmployeePassword(ePassword, true);
+	  }
       public int updateEmp(String eName, String eAddress, String eCity, String ePhone_no,String ePassword, String eEmail, String eAccNum )
       {
           IFDBEmp dbEmp = new DBEmployee();

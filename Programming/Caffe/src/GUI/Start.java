@@ -1,5 +1,5 @@
 package GUI;
-//import Control.CtrEmployee;
+import Control.*;
 import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
 
@@ -38,11 +38,15 @@ public class Start extends JFrame {
 				int code = e.getKeyCode();
 				if(code == 10)
 				{
+					CtrEmp ctrEmp = new CtrEmp();
+					Employee employee = ctrEmp.findByPassword(password.getText());
 					String text = password.getText();
 					System.out.println(text);
-					if(text.intern() == "1")
+					if(employee.getPassword().intern() == password.getText().intern())
 					{
-						
+						CustomerReg cusReg = new CustomerReg();
+						cusReg.setVisible(true);
+						cusReg.setLocationRelativeTo(null);
 					}
 					if(text.intern() == "2")
 					{

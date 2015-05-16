@@ -75,7 +75,7 @@ private static final String databaseName = ";databaseName=dmaj0914_2Sem_6";
 		try {
 			con.setAutoCommit(false);
 		} catch (Exception e) {
-			System.out.println("fejl start transaction");
+			System.out.println("fail start transaction");
 			System.out.println(e.getMessage());
 		}
 	}
@@ -84,7 +84,7 @@ private static final String databaseName = ";databaseName=dmaj0914_2Sem_6";
 		try {
 			con.setAutoCommit(true);
 		} catch (Exception e) {
-			System.out.println("fejl commit transaction");
+			System.out.println("fail commit transaction");
 			System.out.println(e.getMessage());
 		}
 	}
@@ -94,7 +94,7 @@ private static final String databaseName = ";databaseName=dmaj0914_2Sem_6";
 			con.rollback();
 			con.setAutoCommit(true);
 		} catch (Exception e) {
-			System.out.println("fejl rollback transaction");
+			System.out.println("fail rollback transaction");
 			System.out.println(e.getMessage());
 		}
 	}
