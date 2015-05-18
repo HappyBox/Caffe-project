@@ -77,7 +77,7 @@ public class DBManager implements IFDBMngr{
 						"mPassword='"+ MngrObj.getPassword() + "', "+
 							"mEmail='"+ MngrObj.getEmail() + "', "+
 								"mAccNum='"+ MngrObj.getAccNum() + "', "+
-									"m_id ='"+ MngrObj.getPhone_no().substring(0, 4)  + "', "  +
+									"m_id ='"+ MngrObj.getPhone_no().substring(0, 4)  + "' "  +
 										"WHERE mPhone = '"+ MngrObj.getPhone_no() + "'";
                 System.out.println("Update query:" + query);
   		try{ // update Manager

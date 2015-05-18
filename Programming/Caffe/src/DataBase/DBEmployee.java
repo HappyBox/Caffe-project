@@ -77,7 +77,7 @@ public class DBEmployee implements IFDBEmp{
 							"ePassword='"+ EmpObj.getPassword() + "', "+
 								"eEmail='"+ EmpObj.getEmail() + "', "+
 									"eAccNum='"+ EmpObj.getAccNum() + "', "+	
-										"e_id ='"+ EmpObj.getPhone_no().substring(0, 4)  + "',"  +
+										"e_id ='"+ EmpObj.getPhone_no().substring(0, 4)  + "'"  +
 											"WHERE ePhone = '"+ EmpObj.getPhone_no() + "'";
                 System.out.println("Update query:" + query);
   		try{ // update Employee
