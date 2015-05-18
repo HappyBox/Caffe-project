@@ -26,7 +26,6 @@ public class CustomerReg extends JFrame {
 	private JTextField textField;
 	private JLabel lblPhone;
 	private CtrCus ctrCustomer = new CtrCus();
-	private CtrTable ctrTable = new CtrTable();
 	/**
 	 * Launch the application.
 	 */
@@ -73,15 +72,11 @@ public class CustomerReg extends JFrame {
 				try
 				{
 					Customer cus = ctrCus.findByPhone(textField.getText());
-					if (textField.getText().intern() == cus.getPhone().intern())
-					{
-						ctrTable.addCustomer(cus);
-						Table table = new Table(ctrTable);
-						table.setVisible(true);
-						table.setLocationRelativeTo(null);
-						table.setPhone(textField.getText());
-						table.setTable(table);													// to dispose window
-					}
+					Table table = new Table(cus);
+					table.setVisible(true);
+					table.setLocationRelativeTo(null);
+					table.setPhone(textField.getText());
+					table.setTable(table);													// to dispose window
 				}
 				catch(Exception as)
 				{
@@ -108,10 +103,13 @@ public class CustomerReg extends JFrame {
 		btnSkip = new JButton("Skip");
 		btnSkip.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				/*
 				Table table = new Table(ctrTable);
 				table.setVisible(true);
 				table.setLocationRelativeTo(null);
-				table.setTable(table);												// to dispose window
+				table.setTable(table);
+				 */
+																// to dispose window
 			}
 		});
 		btnSkip.setBounds(162, 64, 89, 23);

@@ -15,7 +15,7 @@ public class DBCustomer implements IFDBCus{
       con = DbConnection.getInstance().getDBcon();
     }
   
-  //get one Customer having the cPhone
+  //get one Customer having the ePhone_no
     public Customer searchCustomerPhone(String cPhone, boolean retriveAssociation)
     {   String wClause = "  cPhone = '" + cPhone + "'";
         return singleWhere(wClause, retriveAssociation);
@@ -24,12 +24,12 @@ public class DBCustomer implements IFDBCus{
     public int insertCustomer(Customer Cus)
     {  
        int rc = -1;
-	   String query="INSERT INTO Customer(c_id, cName, cAddress, cCity, cPhone) VALUES('"+
-			   Cus.getid()  + "','"  +
+	   String query="INSERT INTO Customer(cName, cAddress, cCity, cPhone, c_id) VALUES('"+
 			   Cus.getName()  + "','"  +
 			   		Cus.getAddress() + "','" +
 			   			Cus.getCity() + "','" +
-			   				Cus.getPhone() + "')" ;
+			   				Cus.getPhone() + "','"+
+			   					Cus.getPhone().substring(0, 4) + "')" ;
 
        try{ // insert new Customer
           con.setAutoCommit(false);
@@ -64,8 +64,10 @@ public class DBCustomer implements IFDBCus{
 		String query="UPDATE Customer SET "+
 			"cName ='"+ CusObj.getName()+"', "+
 				"cAddress ='"+ CusObj.getAddress() + "', " +
-					"cCity ='"+ CusObj.getCity() + "', " +		
-										" WHERE cPhone = '"+ CusObj.getPhone() + "'";
+					"cCity ='"+ CusObj.getCity() + "', " +
+						"cPhone='"+ CusObj.getPhone() + "', "+
+							"c_id='"+ CusObj.getPhone().substring(0, 4) + "' "+				
+										"WHERE cPhone = '"+ CusObj.getPhone() + "'";
                 System.out.println("Update query:" + query);
   		try{ // update Customer
 	 		Statement stmt = con.createStatement();
@@ -80,12 +82,12 @@ public class DBCustomer implements IFDBCus{
 		return(rc);
 	}
 	
-	public int delete(String cPhone)
+	public int delete(String ePhone_no)
 	{
                int rc=-1;
 	  
 	  	String query="DELETE FROM Customer WHERE cPhone = '" +
-				cPhone + "'";
+				ePhone_no + "'";
                 System.out.println(query);
 	  	try{ // delete from Customer
 	 		Statement stmt = con.createStatement();
@@ -140,7 +142,7 @@ public class DBCustomer implements IFDBCus{
         	  CusObj.setAddress(results.getString("cAddress"));
         	  CusObj.setCity(results.getString("cCity"));
         	  CusObj.setPhone(results.getString("cPhone"));
-          }
+        	 }
          catch(Exception e)
          {
              System.out.println("error in building the Customer object");

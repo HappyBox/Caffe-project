@@ -5,6 +5,7 @@ import Model.*;
 public class CtrTable {
 	private Integer number;
 	private Customer tempCus;
+	private TableInfo table;
 	//private TableInfo table;
 	private TableCon tableCon = new TableCon();
 	public CtrTable()
@@ -17,11 +18,14 @@ public class CtrTable {
 	}
 	public void setTable(int num)
 	{
+		if (table == null)
+		{
+			table = new TableInfo(num);
+			System.out.println("new table set");
+		}
 		
-		TableInfo table = new TableInfo(num);
 		table.setCustomer(tempCus);
 		tableCon.addTable(num,table);
-		System.out.println("eina");
 	}
 	public TableInfo getTable(int num)
 	{

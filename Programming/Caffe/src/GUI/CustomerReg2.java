@@ -22,13 +22,12 @@ public class CustomerReg2 extends JFrame {
 	private JTextField name;
 	private JTextField address;
 	private JTextField phone;
-	private JLabel lblError;
+	private JLabel label;
 	private JButton btnUpdate;
 	private JButton btnFind;
 	private JButton btnBack;
 	private JButton btnAdd;
 	private CustomerReg2 win;
-	private JTextField city;
 
 	/**
 	 * Launch the application.
@@ -50,8 +49,8 @@ public class CustomerReg2 extends JFrame {
 	 * Create the frame.
 	 */
 	public CustomerReg2() {
-		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 354, 166);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 283, 168);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -62,60 +61,47 @@ public class CustomerReg2 extends JFrame {
 		contentPane.add(lblName);
 		
 		JLabel lblAddress = new JLabel("Address");
-		lblAddress.setBounds(10, 36, 60, 14);
+		lblAddress.setBounds(10, 36, 46, 14);
 		contentPane.add(lblAddress);
 		
 		JLabel lblPhone = new JLabel("Phone");
-		lblPhone.setBounds(10, 90, 46, 14);
+		lblPhone.setBounds(10, 61, 46, 14);
 		contentPane.add(lblPhone);
 		
 		name = new JTextField();
-		name.setBounds(66, 8, 183, 20);
+		name.setBounds(66, 8, 86, 20);
 		contentPane.add(name);
 		name.setColumns(10);
 		
 		address = new JTextField();
-		address.setBounds(66, 33, 183, 20);
+		address.setBounds(66, 33, 86, 20);
 		contentPane.add(address);
 		address.setColumns(10);
 		
-		lblError = new JLabel("");
-		lblError.setBounds(10, 116, 239, 20);
-		contentPane.add(lblError);
-		
-		JLabel lblCity = new JLabel("City");
-		lblCity.setBounds(10, 64, 46, 14);
-		contentPane.add(lblCity);
-		
-		city = new JTextField();
-		city.setColumns(10);
-		city.setBounds(66, 60, 183, 20);
-		contentPane.add(city);
-		
 		phone = new JTextField();
-		phone.setBounds(66, 87, 183, 20);
+		phone.setBounds(66, 58, 86, 20);
 		contentPane.add(phone);
 		phone.setColumns(10);
 		
 		btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(name.getText().length() > 0 && address.getText().length() > 0 && city.getText().length() > 0 && phone.getText().length() > 0)
+				if(name.getText().length() > 0 && address.getText().length() > 0 && phone.getText().length() > 0)
 				{
 					CtrCus ctrCus = new CtrCus();
-					int x = ctrCus.createCustomer(name.getText(), address.getText(), city.getText(), phone.getText());
+					int x = ctrCus.createCustomer(name.getText(), address.getText(), phone.getText());
 					if (x != -1)
 					{
-						lblError.setText("customer added");
+						label.setText("customer added");
 					}
 				}
 				else
 				{
-					lblError.setText("fill all fiels");
+					label.setText("fill all fiels");
 				}
 			}
 		});
-		btnAdd.setBounds(248, 8, 89, 23);
+		btnAdd.setBounds(162, 7, 89, 23);
 		contentPane.add(btnAdd);
 		
 		btnBack = new JButton("Back");
@@ -124,7 +110,7 @@ public class CustomerReg2 extends JFrame {
 				win.dispose();
 			}
 		});
-		btnBack.setBounds(248, 87, 89, 23);
+		btnBack.setBounds(162, 91, 89, 23);
 		contentPane.add(btnBack);
 		
 		btnFind = new JButton("Find");
@@ -134,41 +120,43 @@ public class CustomerReg2 extends JFrame {
 				{
 					CtrCus ctrCus = new CtrCus();
 					Customer cus = ctrCus.findCustomer(phone.getText());
-					lblError.setText("here you go");
+					label.setText("here you go");
 					name.setText(cus.getName());
 					address.setText(cus.getAddress());
-					city.setText(cus.getCity());
 				}
 				else
 				{
-					lblError.setText("fill phone field");
+					label.setText("fill phone field");
 				}
 			}
 		});
-		btnFind.setBounds(248, 33, 89, 23);
+		btnFind.setBounds(162, 32, 89, 23);
 		contentPane.add(btnFind);
 		
 		btnUpdate = new JButton("Update");
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(name.getText().length() > 0 && address.getText().length() > 0 && city.getText().length() > 0 && phone.getText().length() > 0)
+				if(name.getText().length() > 0 && address.getText().length() > 0 && phone.getText().length() > 0)
 				{
 					CtrCus ctrCus = new CtrCus();
-					int x = ctrCus.updateCustomer(name.getText(), address.getText(), city.getText(), phone.getText());
+					int x = ctrCus.updateCustomer(name.getText(), address.getText(), phone.getText());
 					if (x != -1)
 					{
-						lblError.setText("customer updated");
+						label.setText("customer updated");
 					}
 				}
 				else
 				{
-					lblError.setText("fill all fiels");
+					label.setText("fill all fiels");
 				}
 			}
 		});
-		btnUpdate.setBounds(248, 61, 89, 23);
+		btnUpdate.setBounds(162, 57, 89, 23);
 		contentPane.add(btnUpdate);
 		
+		label = new JLabel("");
+		label.setBounds(10, 95, 142, 14);
+		contentPane.add(label);
 	}
 	public void setWindow(CustomerReg2 win)
 	{

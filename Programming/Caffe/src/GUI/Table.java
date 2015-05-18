@@ -1,6 +1,7 @@
 package GUI;
 
 import Control.*;
+import Model.Customer;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,12 +21,7 @@ public class Table extends JFrame {
 	private String customerPh;
 	private JButton btnBack;
 	private Table table;
-	private ArrayList<String> tableList1 = new ArrayList();
-	private ArrayList<String> tableList2 = new ArrayList();
-	private ArrayList<String> tableList3 = new ArrayList();
-	private CtrTable ctrTable;
-	public Table(CtrTable ctrTable) {
-		this.ctrTable = ctrTable;
+	public Table(Customer cus) {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setBounds(100, 100, 400, 200);
 		this.setTitle("Table");
@@ -41,12 +37,14 @@ public class Table extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				ctrTable.setTable(1);
-				Menu menu = new Menu(ctrTable, 1);
+				CtrTable ctrTable1 = new CtrTable();
+				ctrTable1.addCustomer(cus);
+				ctrTable1.setTable(1);
+				Menu menu = new Menu(ctrTable1, 1);
 				menu.setVisible(true);
 				menu.setLocationRelativeTo(null);
 				menu.setWindow(menu);
-				menu.setList(tableList1);
+				//menu.setList(tableList1);
 			}});
 		panel.add(btnTable1);
 		
@@ -57,12 +55,14 @@ public class Table extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				/*
 				ctrTable.setTable(2);
 				Menu menu = new Menu(ctrTable, 2);
 				menu.setVisible(true);
 				menu.setLocationRelativeTo(null);
 				menu.setWindow(menu);
 				menu.setList(tableList2);
+				*/
 			}});
 		panel.add(btnTable2);
 		
@@ -73,12 +73,14 @@ public class Table extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				/*
 				ctrTable.setTable(3);
 				Menu menu = new Menu(ctrTable, 3);
 				menu.setVisible(true);
 				menu.setLocationRelativeTo(null);
 				menu.setWindow(menu);
 				menu.setList(tableList3);
+				 */
 			}});
 		panel.add(btnTable3);
 		

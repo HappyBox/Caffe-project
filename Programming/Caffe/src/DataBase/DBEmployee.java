@@ -22,7 +22,7 @@ public class DBEmployee implements IFDBEmp{
     }
     
     public Employee searchEmployeePassword(String ePassword, boolean retriveAssociation)
-    {   String wClause = " ePassword = '" + ePassword + "'";
+    {   String wClause = "  ePassword = '" + ePassword + "'";
         return singleWhere(wClause, retriveAssociation);
     }
      //insert a new Employee
@@ -73,10 +73,10 @@ public class DBEmployee implements IFDBEmp{
 			"eName ='"+ EmpObj.getName()+"', "+
 				"eAddress ='"+ EmpObj.getAddress() + "', " +
 					"eCity ='"+ EmpObj.getCity() + "', " +
-						"ePhone='"+ EmpObj.getPhone_no() + "', " +
-							"ePassword='"+ EmpObj.getPassword() + "', " +
-								"eEmail='"+ EmpObj.getEmail() + "', " +
-									"eAccNum='"+ EmpObj.getAccNum() + "', " +				
+						"ePhone='"+ EmpObj.getPhone_no() + "', "+
+							"ePassword='"+ EmpObj.getPassword() + "', "+
+								"eEmail='"+ EmpObj.getEmail() + "', "+
+									"eAccNum='"+ EmpObj.getAccNum() + "', "+				
 										"WHERE ePhone = '"+ EmpObj.getPhone_no() + "'";
                 System.out.println("Update query:" + query);
   		try{ // update Employee

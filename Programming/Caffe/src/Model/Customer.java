@@ -1,48 +1,44 @@
 package Model;
 
 public class Customer {
-	private String cPhone;
-	private String cName;
-	private String cAddress;
-	private String cCity = "Aalborg";
+	private String phone;
+	private String name;
+	private String address;
+	private String city = "Aalborg";
 	public Customer()
 	{
 		
 	}
-	public void setName(String cName)
+	public void setName(String name)
 	{
-		this.cName = cName;
+		this.name = name;
 	}
-	public void setPhone(String cPhone)
+	public void setPhone(String name)
 	{
-		this.cPhone = cPhone;
+		this.phone = name;
 	}
-	public void setAddress(String cAddress)
+	public void setAddress(String name)
 	{
-		this.cAddress = cAddress;
+		this.address = name;
 	}
-	public void setCity(String cCity)
+	public void setCity(String name)
 	{
-		this.cCity = cCity;
+		this.city = name;
 	}
-	public int getid()
-    {
-    	return Integer.parseInt(cPhone);
-    }
 	public String getPhone()
 	{
-		return cPhone;
+		return phone;
 	}
 	public String getName()
 	{
-		return cName;
+		return name;
 	}
 	public String getAddress()
 	{
-		return cAddress;
+		return address;
 	}
 	public String getCity()
 	{
-		return cCity;
+		return city;
 	}
 }
