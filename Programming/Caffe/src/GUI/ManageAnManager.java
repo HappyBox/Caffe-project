@@ -11,11 +11,11 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
-import Control.CtrEmp;
-import Model.Employee;
+import Control.CtrMngr;
+import Model.Manager;
 import java.awt.Font;
 
-public class ManageAEmployee extends JFrame{
+public class ManageAnManager extends JFrame{
 	private JTextField textName;
 	private JTextField textAddress;
 	private JTextField textCity;
@@ -27,14 +27,14 @@ public class ManageAEmployee extends JFrame{
 	private JButton btnFind;
 	private JButton btnUpdate;
 	private JButton btnDelete;
-	private CtrEmp CtrEmp = new CtrEmp();
+	private CtrMngr CtrMngr = new CtrMngr();
 	private JLabel lblError;
 
-		public ManageAEmployee() {
+		public ManageAnManager() {
 
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
 		this.setBounds(100, 100, 432, 355);
-		this.setTitle("Manage a employee");
+		this.setTitle("Manage a manager");
 		
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.CENTER);
@@ -44,7 +44,7 @@ public class ManageAEmployee extends JFrame{
 		panel_1.setLayout(null);
 		panel_1.setToolTipText("");
 		panel_1.setName("");
-		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Employee", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Manager", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel_1.setBounds(6, 6, 420, 318);
 		panel.add(panel_1);
 		
@@ -121,7 +121,7 @@ public class ManageAEmployee extends JFrame{
 				// TODO Auto-generated method stub
 				if(textPhone.getText()!=null)
 				{
-					Employee employee = CtrEmp.findByPhone(textPhone.getText());
+					Manager employee = CtrMngr.findByPhone(textPhone.getText());
 					//System.out.println("done");
 					textName.setText(employee.getName());
 						textAddress.setText(employee.getAddress());
@@ -154,7 +154,7 @@ public class ManageAEmployee extends JFrame{
 				// TODO Auto-generated method stub
 				if(textName.getText().length()>0  && textAddress.getText().length()>0 && textCity.getText().length()>0 && textPhone.getText().length()>0 && textPassword.getText().length()>0 && textEmail.getText().length()>0 && textAccNum.getText().length()>0 )
 				{
-					Employee employee = new Employee();
+					Manager employee = new Manager();
 						employee.setName(textName.getText());
 							employee.setAddress(textAddress.getText());
 								employee.setCity(textCity.getText());
@@ -162,7 +162,7 @@ public class ManageAEmployee extends JFrame{
 										employee.setPassword(textPassword.getText());
 											employee.setEmail(textEmail.getText());
 												employee.setAccNum(textAccNum.getText());
-					CtrEmp.insertNew(employee);
+					CtrMngr.insertNew(employee);
 					lblError.setText("employee added");
 				}
 				else
@@ -185,7 +185,7 @@ public class ManageAEmployee extends JFrame{
 				// TODO Auto-generated method stub
 				if(textName.getText().length()>0  && textAddress.getText().length()>0 && textCity.getText().length()>0 && textPhone.getText().length()>0 && textPassword.getText().length()>0 && textEmail.getText().length()>0 && textAccNum.getText().length()>0 )
 				{
-					CtrEmp.updateEmp(textName.getText(), textAddress.getText(), textCity.getText(), textPhone.getText(), textPassword.getText(), textEmail.getText(), textAccNum.getText());
+					CtrMngr.updateMngr(textName.getText(), textAddress.getText(), textCity.getText(), textPhone.getText(), textPassword.getText(), textEmail.getText(), textAccNum.getText());
 					lblError.setText("employee updated");
 				}
 				else
@@ -206,8 +206,8 @@ public class ManageAEmployee extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				if(textPhone.getText().length()>0){
-					CtrEmp.delete(textPhone.getText());
-					lblError.setText("Employee was deleted");
+					CtrMngr.delete(textPhone.getText());
+					lblError.setText("Manager was deleted");
 					textName.setText("");
 					textAddress.setText("");
 					textCity.setText("");
@@ -239,7 +239,7 @@ public class ManageAEmployee extends JFrame{
 	}
 
 	public static void main(String[] args) {
-		ManageAEmployee start = new ManageAEmployee();
+		ManageAnManager start = new ManageAnManager();
 		start.setVisible(true);
 		start.setLocationRelativeTo(null);
 

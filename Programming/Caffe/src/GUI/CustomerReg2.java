@@ -1,20 +1,18 @@
 package GUI;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 import Control.CtrCus;
 import Model.Customer;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class CustomerReg2 extends JFrame {
 
@@ -22,7 +20,6 @@ public class CustomerReg2 extends JFrame {
 	private JTextField name;
 	private JTextField address;
 	private JTextField phone;
-	private JLabel label;
 	private JButton btnUpdate;
 	private JButton btnFind;
 	private JButton btnBack;
@@ -50,7 +47,7 @@ public class CustomerReg2 extends JFrame {
 	 */
 	public CustomerReg2() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 283, 168);
+		setBounds(100, 100, 358, 138);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -61,25 +58,29 @@ public class CustomerReg2 extends JFrame {
 		contentPane.add(lblName);
 		
 		JLabel lblAddress = new JLabel("Address");
-		lblAddress.setBounds(10, 36, 46, 14);
+		lblAddress.setBounds(10, 36, 59, 14);
 		contentPane.add(lblAddress);
 		
 		JLabel lblPhone = new JLabel("Phone");
-		lblPhone.setBounds(10, 61, 46, 14);
+		lblPhone.setBounds(10, 59, 46, 14);
 		contentPane.add(lblPhone);
 		
+		JLabel lblError = new JLabel("");
+		lblError.setBounds(10, 85, 238, 24);
+		contentPane.add(lblError);
+		
 		name = new JTextField();
-		name.setBounds(66, 8, 86, 20);
+		name.setBounds(66, 8, 182, 20);
 		contentPane.add(name);
 		name.setColumns(10);
 		
 		address = new JTextField();
-		address.setBounds(66, 33, 86, 20);
+		address.setBounds(66, 33, 182, 20);
 		contentPane.add(address);
 		address.setColumns(10);
 		
 		phone = new JTextField();
-		phone.setBounds(66, 58, 86, 20);
+		phone.setBounds(64, 62, 184, 20);
 		contentPane.add(phone);
 		phone.setColumns(10);
 		
@@ -92,16 +93,16 @@ public class CustomerReg2 extends JFrame {
 					int x = ctrCus.createCustomer(name.getText(), address.getText(), phone.getText());
 					if (x != -1)
 					{
-						label.setText("customer added");
+						lblError.setText("customer added");
 					}
 				}
 				else
 				{
-					label.setText("fill all fiels");
+					lblError.setText("fill all fiels");
 				}
 			}
 		});
-		btnAdd.setBounds(162, 7, 89, 23);
+		btnAdd.setBounds(260, 8, 89, 23);
 		contentPane.add(btnAdd);
 		
 		btnBack = new JButton("Back");
@@ -110,7 +111,7 @@ public class CustomerReg2 extends JFrame {
 				win.dispose();
 			}
 		});
-		btnBack.setBounds(162, 91, 89, 23);
+		btnBack.setBounds(262, 86, 89, 23);
 		contentPane.add(btnBack);
 		
 		btnFind = new JButton("Find");
@@ -120,17 +121,17 @@ public class CustomerReg2 extends JFrame {
 				{
 					CtrCus ctrCus = new CtrCus();
 					Customer cus = ctrCus.findCustomer(phone.getText());
-					label.setText("here you go");
+					lblError.setText("here you go");
 					name.setText(cus.getName());
 					address.setText(cus.getAddress());
 				}
 				else
 				{
-					label.setText("fill phone field");
+					lblError.setText("fill phone field");
 				}
 			}
 		});
-		btnFind.setBounds(162, 32, 89, 23);
+		btnFind.setBounds(260, 33, 89, 23);
 		contentPane.add(btnFind);
 		
 		btnUpdate = new JButton("Update");
@@ -142,21 +143,18 @@ public class CustomerReg2 extends JFrame {
 					int x = ctrCus.updateCustomer(name.getText(), address.getText(), phone.getText());
 					if (x != -1)
 					{
-						label.setText("customer updated");
+						lblError.setText("customer updated");
 					}
 				}
 				else
 				{
-					label.setText("fill all fiels");
+					lblError.setText("fill all fiels");
 				}
 			}
 		});
-		btnUpdate.setBounds(162, 57, 89, 23);
+		btnUpdate.setBounds(260, 59, 89, 23);
 		contentPane.add(btnUpdate);
 		
-		label = new JLabel("");
-		label.setBounds(10, 95, 142, 14);
-		contentPane.add(label);
 	}
 	public void setWindow(CustomerReg2 win)
 	{

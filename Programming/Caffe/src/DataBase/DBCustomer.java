@@ -62,12 +62,12 @@ public class DBCustomer implements IFDBCus{
 		int rc=-1;
 
 		String query="UPDATE Customer SET "+
-			"cName ='"+ CusObj.getName()+"', "+
-				"cAddress ='"+ CusObj.getAddress() + "', " +
-					"cCity ='"+ CusObj.getCity() + "', " +
-						"cPhone='"+ CusObj.getPhone() + "', "+
-							"c_id='"+ CusObj.getPhone().substring(0, 4) + "' "+				
-										"WHERE cPhone = '"+ CusObj.getPhone() + "'";
+		"cName ='"+ CusObj.getName()+"', "+
+			"cAddress ='"+ CusObj.getAddress() + "', " +
+				"cCity ='"+ CusObj.getCity() + "', " +
+					"cPhone='"+ CusObj.getPhone() + "', "+
+						"c_id='"+ CusObj.getPhone().substring(0, 4) + "' "+				
+									"WHERE cPhone = '"+ CusObj.getPhone() + "'";
                 System.out.println("Update query:" + query);
   		try{ // update Customer
 	 		Statement stmt = con.createStatement();

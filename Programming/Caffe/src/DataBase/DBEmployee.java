@@ -30,14 +30,14 @@ public class DBEmployee implements IFDBEmp{
     {  
        int rc = -1;
 	   String query="INSERT INTO Employee(e_id, eName, eAddress, eCity, ePhone, ePassword, eEmail, eAccNum) VALUES('"+
-			   Emp.getid()  + "','"  +
-			   Emp.getName()  + "','"  +
-			   		Emp.getAddress() + "','" +
-			   			Emp.getCity() + "','" +
-			   				Emp.getPhone_no() + "',' " +
-			   					Emp.getPassword() + "','" +
-			   						Emp.getEmail()+ "','" +
-			   								Emp.getAccNum()  + "')" ;
+			   Emp.getPhone_no().substring(0, 4)  + "','"  +
+				   Emp.getName()  + "','"  +
+				   		Emp.getAddress() + "','" +
+				   			Emp.getCity() + "','" +
+				   				Emp.getPhone_no() + "',' " +
+				   					Emp.getPassword() + "','" +
+				   						Emp.getEmail()+ "','" +
+				   							Emp.getAccNum()  + "')" ;
 
        try{ // insert new Employee
           con.setAutoCommit(false);
@@ -76,8 +76,9 @@ public class DBEmployee implements IFDBEmp{
 						"ePhone='"+ EmpObj.getPhone_no() + "', "+
 							"ePassword='"+ EmpObj.getPassword() + "', "+
 								"eEmail='"+ EmpObj.getEmail() + "', "+
-									"eAccNum='"+ EmpObj.getAccNum() + "', "+				
-										"WHERE ePhone = '"+ EmpObj.getPhone_no() + "'";
+									"eAccNum='"+ EmpObj.getAccNum() + "', "+	
+										"e_id ='"+ EmpObj.getPhone_no().substring(0, 4)  + "',"  +
+											"WHERE ePhone = '"+ EmpObj.getPhone_no() + "'";
                 System.out.println("Update query:" + query);
   		try{ // update Employee
 	 		Statement stmt = con.createStatement();

@@ -16,10 +16,10 @@ public class ManagerGUI extends JFrame{
 		this.setBounds(100, 100, 225, 300);
 		this.setTitle(title);
 		
-		JButton btnManageAEmployee = new JButton("Manage a employee");
-		btnManageAEmployee.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		btnManageAEmployee.setBounds(6, 0, 213, 58);
-		getContentPane().add(btnManageAEmployee);
+		JButton btnManageAnEmployee = new JButton("Manage a employee");
+		btnManageAnEmployee.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		btnManageAnEmployee.setBounds(6, 0, 213, 58);
+		getContentPane().add(btnManageAnEmployee);
 		
 		JButton btnManageAProduct = new JButton("Manage a product");
 		btnManageAProduct.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
@@ -43,11 +43,11 @@ public class ManagerGUI extends JFrame{
 	/*
 	 * Buttons Functionality
 	 */
-	btnManageAEmployee.addActionListener(new ActionListener() {
+	btnManageAnEmployee.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent event) {
-		ManageAEmployee ManageAEmployee = new ManageAEmployee();
-		ManageAEmployee.setVisible(true);
-		ManageAEmployee.setLocationRelativeTo(null);
+		ManageAnEmployee ManageAnEmployee = new ManageAnEmployee();
+		ManageAnEmployee.setVisible(true);
+		ManageAnEmployee.setLocationRelativeTo(null);
 			
 		}
 	});

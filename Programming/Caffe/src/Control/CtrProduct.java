@@ -1,6 +1,4 @@
 
-// This class is for manager to control products!
-
 package Control;
 
 import DataBase.DBProduct;
