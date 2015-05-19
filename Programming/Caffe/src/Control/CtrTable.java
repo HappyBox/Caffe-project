@@ -5,6 +5,7 @@ import Model.*;
 public class CtrTable {
 	private Integer number;
 	private Customer tempCus;
+	private Employee tempEmp;
 	private TableInfo table;
 	private boolean customerSet = false;
 	private TableCon tableCon = new TableCon();
@@ -12,6 +13,11 @@ public class CtrTable {
 	{
 		
 	}
+	public void addEmployee(Employee emp)
+	{
+		tempEmp = emp;
+	}
+	
 	public void addCustomer(Customer cus)                  //move all info to model layer
 	{
 		tempCus = cus;

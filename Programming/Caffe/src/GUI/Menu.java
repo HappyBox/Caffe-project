@@ -69,6 +69,7 @@ public class Menu extends JFrame {
 	 */
 	public Menu(Customer cus) {
 		print(cus);
+		setTitle("Customer: " + cus.getName());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

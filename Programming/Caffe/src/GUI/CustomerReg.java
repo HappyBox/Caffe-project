@@ -12,6 +12,7 @@ import javax.swing.JButton;
 
 import Control.*;
 import Model.Customer;
+import Model.Employee;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -47,8 +48,8 @@ public class CustomerReg extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CustomerReg() {
-		setTitle("Select Customer");
+	public CustomerReg(Employee emp, CtrTable ctrTable1, CtrTable ctrTable2, CtrTable ctrTable3) {
+		setTitle("Logged in as " + emp.getName());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 286, 147);
 		contentPane = new JPanel();
@@ -72,11 +73,13 @@ public class CustomerReg extends JFrame {
 				try
 				{
 					Customer cus = ctrCus.findByPhone(textField.getText());
-					Table table = new Table(cus);
-					table.setVisible(true);
-					table.setLocationRelativeTo(null);
-					table.setPhone(textField.getText());
-					table.setTable(table);													// to dispose window
+					if(cus.getPhone().intern() == textField.getText().intern())
+					{
+						Table table = new Table(emp, cus, ctrTable1, ctrTable2, ctrTable3);
+						table.setVisible(true);
+						table.setLocationRelativeTo(null);
+						table.setTable(table);	    // to dispose window
+					}
 				}
 				catch(Exception as)
 				{
@@ -103,13 +106,14 @@ public class CustomerReg extends JFrame {
 		btnSkip = new JButton("Skip");
 		btnSkip.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				/*
-				Table table = new Table(ctrTable);
+				Customer cus = new Customer();
+				cus.setName("none");
+				cus.setPhone("00000000");
+				cus.setAddress("Sofiendalsvej60");
+				Table table = new Table(emp, cus, ctrTable1, ctrTable2, ctrTable3);
 				table.setVisible(true);
 				table.setLocationRelativeTo(null);
-				table.setTable(table);
-				 */
-																// to dispose window
+				table.setTable(table);	    // to dispose window
 			}
 		});
 		btnSkip.setBounds(162, 64, 89, 23);

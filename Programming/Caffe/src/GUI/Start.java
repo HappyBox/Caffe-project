@@ -9,6 +9,7 @@ import javax.swing.JPasswordField;
 
 import Control.CtrEmp;
 import Control.CtrMngr;
+import Control.CtrTable;
 import Model.Employee;
 import Model.Manager;
 
@@ -43,9 +44,16 @@ public class Start extends JFrame {
 						{
 							CtrEmp ctrEmp = new CtrEmp();
 							Employee employee = ctrEmp.findByPassword(password.getText());
-							CustomerReg cusReg = new CustomerReg();
-							cusReg.setVisible(true);
-							cusReg.setLocationRelativeTo(null);
+							if(employee.getPassword().intern() == password.getText().intern())
+							{
+								CtrTable ctrTable1 = new CtrTable();
+								CtrTable ctrTable2 = new CtrTable();
+								CtrTable ctrTable3 = new CtrTable();
+								ctrTable1.addEmployee(employee);
+								CustomerReg cusReg = new CustomerReg(employee, ctrTable1, ctrTable2, ctrTable3);
+								cusReg.setVisible(true);
+								cusReg.setLocationRelativeTo(null);	
+							}
 						}
 						catch(Exception as)
 							{
@@ -64,7 +72,7 @@ public class Start extends JFrame {
 								managerGUI.setVisible(true);
 								managerGUI.setLocationRelativeTo(null);
 							
-						}
+							}
 					}
 					catch(Exception as)
 					{
