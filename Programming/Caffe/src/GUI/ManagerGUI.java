@@ -13,31 +13,22 @@ public class ManagerGUI extends JFrame{
 	public ManagerGUI() {
 		getContentPane().setLayout(null);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setBounds(100, 100, 225, 300);
+		this.setBounds(100, 100, 225, 233);
 		this.setTitle(title);
 		
-		JButton btnManageAnEmployee = new JButton("Manage a employee");
+		JButton btnManageAnEmployee = new JButton("Manage an employee");
 		btnManageAnEmployee.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		btnManageAnEmployee.setBounds(6, 0, 213, 58);
 		getContentPane().add(btnManageAnEmployee);
 		
-		JButton btnManageAProduct = new JButton("Manage a product");
-		btnManageAProduct.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		btnManageAProduct.setBounds(6, 70, 213, 52);
-		getContentPane().add(btnManageAProduct);
-		
-		JButton btnTransportPriceUpdate = new JButton("Transport price update");
-		btnTransportPriceUpdate.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnTransportPriceUpdate.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		btnTransportPriceUpdate.setBounds(6, 134, 213, 55);
-		getContentPane().add(btnTransportPriceUpdate);
+		JButton btnManageADish = new JButton("Manage dish");
+		btnManageADish.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		btnManageADish.setBounds(6, 70, 213, 52);
+		getContentPane().add(btnManageADish);
 		
 		JButton btnUpdateTheCompany = new JButton("Update the company information");
 		btnUpdateTheCompany.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		btnUpdateTheCompany.setBounds(0, 201, 225, 71);
+		btnUpdateTheCompany.setBounds(0, 129, 225, 71);
 		getContentPane().add(btnUpdateTheCompany);
 	
 	/*
@@ -52,21 +43,14 @@ public class ManagerGUI extends JFrame{
 		}
 	});
 	
-	btnManageAProduct.addActionListener(new ActionListener() {
+	btnManageADish.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent event) {
-			ManageAProduct ManageAProduct = new ManageAProduct();
-			ManageAProduct.setVisible(true);
-			ManageAProduct.setLocationRelativeTo(null);
+			ManageADish ManageADish = new ManageADish();
+			ManageADish.setVisible(true);
+			ManageADish.setLocationRelativeTo(null);
 		}
 	});
 	
-	btnTransportPriceUpdate.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent event) {
-			TransportPriceUpdate TransportPriceUpdate = new TransportPriceUpdate();
-			TransportPriceUpdate.setVisible(true);
-			TransportPriceUpdate.setLocationRelativeTo(null);
-		}
-	});
 	
 	btnUpdateTheCompany.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent event) {

@@ -1,5 +1,4 @@
 package GUI;
-import Control.*;
 import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
 
@@ -8,8 +7,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 
-import Control.CtrEmployee;
+import Control.CtrEmp;
+import Control.CtrMngr;
 import Model.Employee;
+import Model.Manager;
 
 public class Start extends JFrame {
 	private JPasswordField password;
@@ -39,35 +40,42 @@ public class Start extends JFrame {
 				if(code == 10)
 				{
 					try
-					{
-						CtrEmp ctrEmp = new CtrEmp();
-						Employee employee = ctrEmp.findByPassword(password.getText());
-						String text = password.getText();
-						System.out.println(text);
-						if(employee.getPassword().intern() == password.getText().intern())
 						{
-							CustomerReg cusReg = new CustomerReg();
-							cusReg.setVisible(true);
-							cusReg.setLocationRelativeTo(null);
+							CtrEmp ctrEmp = new CtrEmp();
+							Employee employee = ctrEmp.findByPassword(password.getText());
+							String text = password.getText();
+							System.out.println(text);
+							if(employee.getPassword().intern() == password.getText().intern())
+							{
+								CustomerReg cusReg = new CustomerReg();
+								cusReg.setVisible(true);
+								cusReg.setLocationRelativeTo(null);
+							}
 						}
-						if(text.intern() == "2")
+						catch(Exception as)
+							{
+								lblError.setText("Wrong password");
+							}
+					try 
 						{
-							CustomerReg cusReg = new CustomerReg();
-							cusReg.setVisible(true);
-							cusReg.setLocationRelativeTo(null);
-						}
-						if(text.intern() == "3")
-						{
-							ManagerGUI manager = new ManagerGUI();
-							manager.setVisible(true);
-							manager.setLocationRelativeTo(null);
-						
+							CtrMngr ctrMngr = new CtrMngr();
+							Manager manager = ctrMngr.findByPassword(password.getText());
+							String text = password.getText();
+							System.out.println(text);
+							
+							if(manager.getPassword().intern() == password.getText().intern())
+							{
+								ManagerGUI managerGUI = new ManagerGUI();
+								managerGUI.setVisible(true);
+								managerGUI.setLocationRelativeTo(null);
+							
 						}
 					}
 					catch(Exception as)
 					{
 						lblError.setText("Wrong password");
 					}
+					
 				}
 			}
 

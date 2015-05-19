@@ -1,21 +1,20 @@
 package GUI;
 
-import Control.*;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import Control.CtrTable;
 
 public class Product extends JFrame {
 	private JButton btnPotato;
 	private JButton btnPica;
 	private JButton btnCola;
 	private JButton btnBack;
-	private CtrProduct ctrProduct = new CtrProduct();
+//	private CtrProduct ctrProduct = new CtrProduct();
 	public Product(CtrTable table) {
 		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -33,7 +32,7 @@ public class Product extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				//table.add(ctrProduct.get("product_name"));
+			//	table.add(ctrProduct.get("product_name"));
 			}
 		});
 		panel.add(btnPotato);

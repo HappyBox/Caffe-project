@@ -98,8 +98,8 @@ public class Menu extends JFrame {
 		mntmFriedBread = new JMenuItem("Fried bread");
 		mntmFriedBread.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Dish dish = new Dish(20,"Fried bread");
-				table.addDish(dish);                             //kazkodel neprideda i masyva
+		//		Dish dish = new Dish(20,"Fried bread");
+		//		table.addDish(dish);                             //kazkodel neprideda i masyva
 				print(table);
 			}
 		});

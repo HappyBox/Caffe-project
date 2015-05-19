@@ -8,14 +8,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-
-import Control.CtrTPU;
-import Model.TPU;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
 
 public class UpdateTheCompany extends JFrame{
-	private JTextArea text;
 	private JButton btnFind;
 	private JButton btnUpdate;
+	private String company = "There is wrote company informations!";
 	public UpdateTheCompany() {
 
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
@@ -38,9 +37,18 @@ public class UpdateTheCompany extends JFrame{
 		lblError.setBounds(6, 144, 323, 34);
 		panel.add(lblError);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(6, 6, 323, 136);
-		panel.add(textArea);
+		JTextArea text = new JTextArea();
+		text.setBounds(10, 6, 310, 133);
+		panel.add(text);
+		
+		btnFind.addActionListener(new java.awt.event.ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				text.setText(company);
+			}
+			
+		});	
 		
 		btnUpdate.addActionListener(new java.awt.event.ActionListener(){
 
@@ -48,7 +56,7 @@ public class UpdateTheCompany extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 				if( text.getText().length()>0)
 				{
-					CtrTPU.updatePrice(text.getText());
+					company = text.getText();
 					lblError.setText("Informations updated");
 				}
 				else
@@ -58,15 +66,7 @@ public class UpdateTheCompany extends JFrame{
 			}
 			
 		});
-		btnFind.addActionListener(new java.awt.event.ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-					TPU Tpu = CtrTPU.findPrice();
-					text.setText(Tpu.getPrice());
-			}
-			
-		});	
+		
 	}
 
 	public void main(String[] args) {
