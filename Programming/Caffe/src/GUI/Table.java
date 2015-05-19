@@ -38,9 +38,12 @@ public class Table extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				CtrTable ctrTable1 = new CtrTable();
-				ctrTable1.addCustomer(cus);
+				if(ctrTable1.customerIsSet() == false)					//allways false
+				{
+					ctrTable1.addCustomer(cus);
+				}
 				ctrTable1.setTable(1);
-				Menu menu = new Menu(ctrTable1, 1);
+				Menu menu = new Menu(ctrTable1.getCustomer());
 				menu.setVisible(true);
 				menu.setLocationRelativeTo(null);
 				menu.setWindow(menu);

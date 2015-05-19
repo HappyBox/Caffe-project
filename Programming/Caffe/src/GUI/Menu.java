@@ -45,7 +45,6 @@ public class Menu extends JFrame {
 	private JMenuItem mntmIceCream;
 	private JList list;
 	private DefaultListModel listControl = new DefaultListModel();
-	private ArrayList<String> sarasas;
 	private JButton btnBack;
 	/**
 	 * Launch the application.
@@ -68,10 +67,8 @@ public class Menu extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Menu(CtrTable ctrTable, int number) {
-		this.ctrTable = ctrTable;
-		TableInfo table = ctrTable.getTable(number);
-		print(table);
+	public Menu(Customer cus) {
+		print(cus);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -98,9 +95,8 @@ public class Menu extends JFrame {
 		mntmFriedBread = new JMenuItem("Fried bread");
 		mntmFriedBread.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-		//		Dish dish = new Dish(20,"Fried bread");
-		//		table.addDish(dish);                             //kazkodel neprideda i masyva
-				print(table);
+				cus.addDish("Fried bread", 20);
+				print(cus);
 			}
 		});
 		mnStarters.add(mntmFriedBread);
@@ -202,21 +198,14 @@ public class Menu extends JFrame {
 		}
 		return old;
 	}
-	public void print(TableInfo table)
+	public void print(Customer cus)
 	{
-		ArrayList<Dish> foodList = table.getList();
-		//dish = format(dish);
-		//sarasas.add(dish + price+" kr");
+		ArrayList<String> orders = cus.getOrders();
 		listControl.clear();
-		for(Dish dish:foodList)
+		for(String order:orders)
 		{
-			String x = dish.getName() + "  "+ dish.getPrice();
-			listControl.addElement(x);
+			listControl.addElement(order);
 		}
-	}
-	public void setList(ArrayList sarasas)
-	{
-		this.sarasas = sarasas;
 	}
 	public void setWindow(Menu win)
 	{

@@ -43,14 +43,9 @@ public class Start extends JFrame {
 						{
 							CtrEmp ctrEmp = new CtrEmp();
 							Employee employee = ctrEmp.findByPassword(password.getText());
-							String text = password.getText();
-							System.out.println(text);
-							if(employee.getPassword().intern() == password.getText().intern())
-							{
-								CustomerReg cusReg = new CustomerReg();
-								cusReg.setVisible(true);
-								cusReg.setLocationRelativeTo(null);
-							}
+							CustomerReg cusReg = new CustomerReg();
+							cusReg.setVisible(true);
+							cusReg.setLocationRelativeTo(null);
 						}
 						catch(Exception as)
 							{
