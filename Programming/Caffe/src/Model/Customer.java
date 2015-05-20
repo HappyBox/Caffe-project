@@ -7,22 +7,31 @@ public class Customer {
 	private String name;
 	private String address;
 	private String city = "Aalborg";
-	private ArrayList<String> orders = new ArrayList<String>();
+	private ArrayList<Dish> orders = new ArrayList<Dish>();
 	private Integer bill = 0;
 	public Customer()
 	{
-		
+		bill = 0;
 	}
-	public void addDish(String name, int price)
+	public void removeDish(int i)
 	{
-		while(name.length()<20)
-		{
-			name+=" ";
-		}
-		orders.add(name+price);
-		bill+=price;
+		bill -= orders.get(i).getPrice();
+		orders.remove(i);
 	}
-	public ArrayList<String> getOrders()
+	public void addDish(Dish dish)
+	{
+		while(dish.getName().length()<20)
+		{
+			dish.setName(dish.getName()+" ");
+		}
+		orders.add(dish);
+		bill+=dish.getPrice();
+	}
+	public Integer getBill()
+	{
+		return bill;
+	}
+	public ArrayList<Dish> getOrders()
 	{
 		return orders;
 	}

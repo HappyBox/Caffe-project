@@ -18,8 +18,14 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 
 public class Menu extends JFrame {
 
@@ -46,6 +52,12 @@ public class Menu extends JFrame {
 	private JList list;
 	private DefaultListModel listControl = new DefaultListModel();
 	private JButton btnBack;
+	private JMenuItem mntmDrink;
+	private JMenu mnMealOfA;
+	private JLabel label;
+	private JButton btnPay;
+	private JButton btnOk;
+	private ArrayList<Dish> newList = new ArrayList<Dish>();
 	/**
 	 * Launch the application.
 	 */
@@ -67,8 +79,8 @@ public class Menu extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Menu(Customer cus) {
-		print(cus);
+	public Menu(Customer cus, CtrTable ctrTable) {
+
 		setTitle("Customer: " + cus.getName());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -77,7 +89,7 @@ public class Menu extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		btnBack = new JButton("Back");
+		btnBack = new JButton("Cancel");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				win.dispose();
@@ -96,7 +108,12 @@ public class Menu extends JFrame {
 		mntmFriedBread = new JMenuItem("Fried bread");
 		mntmFriedBread.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				cus.addDish("Fried bread", 20);
+				Dish dish = new Dish();
+				dish.setName("Fried bread");
+				dish.setPrice(20);
+				dish.setAvailable(0);
+				newList.add(dish);
+				//cus.addDish(dish);
 				print(cus);
 			}
 		});
@@ -105,19 +122,19 @@ public class Menu extends JFrame {
 		mntmCheese = new JMenuItem("Cheese");
 		mntmCheese.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Dish dish = new Dish();
+				dish.setName("Cheese");
+				dish.setPrice(10);
+				dish.setAvailable(0);
+				newList.add(dish);
+				//cus.addDish(dish);
+				print(cus);
 			}
 		});
 		mnStarters.add(mntmCheese);
 		
 		mnSoups = new JMenu("Soups");
 		menuBar.add(mnSoups);
-		
-		mntmDaySoup = new JMenuItem("Day soup");
-		mntmDaySoup.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		mnSoups.add(mntmDaySoup);
 		
 		mntmMushrooms = new JMenuItem("Mushrooms");
 		mntmMushrooms.addActionListener(new ActionListener() {
@@ -139,6 +156,13 @@ public class Menu extends JFrame {
 		mntmHavaii = new JMenuItem("Havaii");
 		mntmHavaii.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Dish dish = new Dish();
+				dish.setName("Havaii");
+				dish.setPrice(55);
+				dish.setAvailable(0);
+				newList.add(dish);
+				//cus.addDish(dish);
+				print(cus);
 			}
 		});
 		mnPizzas.add(mntmHavaii);
@@ -156,6 +180,13 @@ public class Menu extends JFrame {
 		mntmCola = new JMenuItem("Cola");
 		mntmCola.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Dish dish = new Dish();
+				dish.setName("Cola");
+				dish.setPrice(5);
+				dish.setAvailable(0);
+				newList.add(dish);
+				//cus.addDish(dish);
+				print(cus);
 			}
 		});
 		mnDrinks.add(mntmCola);
@@ -184,28 +215,104 @@ public class Menu extends JFrame {
 		});
 		mnDeserts.add(mntmIceCream);
 		
+		mnMealOfA = new JMenu("meal of a day");
+		menuBar.add(mnMealOfA);
+		
+		mntmDaySoup = new JMenuItem("Day soup");
+		mnMealOfA.add(mntmDaySoup);
+		mntmDaySoup.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Dish dish = new Dish();
+				dish.setName("Day soup");
+				dish.setPrice(25);
+				dish.setAvailable(0);
+				newList.add(dish);
+				//cus.addDish(dish);
+				print(cus);
+			}
+		});
+		
+		mntmDrink = new JMenuItem("Drink");
+		mnMealOfA.add(mntmDrink);
+		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 27, 414, 190);
+		scrollPane.setBounds(10, 27, 414, 139);
 		contentPane.add(scrollPane);
 		
 		list = new JList(listControl);
-		scrollPane.setViewportView(list);
-	}
-	public String format(String old)
-	{
-		while(old.length()<20)
+		list.addMouseListener(new MouseAdapter()
 		{
-			old += " ";
+			public void mouseClicked(MouseEvent evt) {
+		        //JList list = (JList)evt.getSource();
+		        if (evt.getClickCount() == 2) {
+		            // Double-click detected
+		            int index = list.locationToIndex(evt.getPoint());
+		            if(index >= cus.getOrders().size())
+		            {
+		            	index -= cus.getOrders().size();
+		            	newList.remove(index);
+		            }
+		            else
+		            {
+		            	cus.removeDish(index);
+		            }
+		            print(cus);
+		        }
+		    }
+		});
+		scrollPane.setViewportView(list);
+		
+		btnOk = new JButton("Confirm");
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				oldnew(cus);
+				win.dispose();
+			}
+		});
+		btnOk.setBounds(236, 228, 89, 23);
+		contentPane.add(btnOk);
+		
+		btnPay = new JButton("Pay");
+		btnPay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ctrTable.setCustomer(false);
+				win.dispose();
+			}
+		});
+		btnPay.setBounds(10, 228, 89, 23);
+		contentPane.add(btnPay);
+		
+		label = new JLabel("");
+		label.setBounds(10, 188, 89, 14);
+		contentPane.add(label);
+		print(cus);
+	}
+	public String format(String name)
+	{
+		while(name.length()<20)
+		{
+			name += " ";
 		}
-		return old;
+		return name;
+	}
+	public void oldnew(Customer cus) {
+		for(Dish dish:newList)
+		{
+			cus.addDish(dish);
+		}
 	}
 	public void print(Customer cus)
 	{
-		ArrayList<String> orders = cus.getOrders();
+		ArrayList<Dish> orders = cus.getOrders();
 		listControl.clear();
-		for(String order:orders)
+		for(Dish dish:orders)
 		{
-			listControl.addElement(order);
+			listControl.addElement(dish.getName()+dish.getPrice()+" kr");
+		}
+		label.setText("In total: " + cus.getBill());
+		for(Dish dish:newList)
+		{
+			listControl.addElement(format(dish.getName())+dish.getPrice()+" kr");
 		}
 	}
 	public void setWindow(Menu win)

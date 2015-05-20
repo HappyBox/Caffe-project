@@ -182,7 +182,7 @@ public class Table extends JFrame {
 					ctrTable1.addCustomer(cus);
 				}
 				ctrTable1.setTable(1);
-				Menu menu = new Menu(ctrTable1.getCustomer());
+				Menu menu = new Menu(ctrTable1.getCustomer(), ctrTable1);
 				menu.setVisible(true);
 				menu.setLocationRelativeTo(null);
 				menu.setWindow(menu);
@@ -241,7 +241,7 @@ public class Table extends JFrame {
 					ctrTable3.addCustomer(cus);
 				}
 				ctrTable3.setTable(1);
-				Menu menu = new Menu(ctrTable3.getCustomer());
+				Menu menu = new Menu(ctrTable3.getCustomer(), ctrTable3);
 				menu.setVisible(true);
 				menu.setLocationRelativeTo(null);
 				menu.setWindow(menu);
@@ -260,7 +260,7 @@ public class Table extends JFrame {
 					ctrTable2.addCustomer(cus);
 				}
 				ctrTable2.setTable(1);
-				Menu menu = new Menu(ctrTable2.getCustomer());
+				Menu menu = new Menu(ctrTable2.getCustomer(), ctrTable2);
 				menu.setVisible(true);
 				menu.setLocationRelativeTo(null);
 				menu.setWindow(menu);
