@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Control.CtrTable;
+import Control.*;
 import Model.*;
 
 import javax.swing.DefaultListModel;
@@ -265,7 +265,12 @@ public class Menu extends JFrame {
 		btnOk = new JButton("Confirm");
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				CtrDish ctrDish = new CtrDish();
 				oldnew(cus);
+				for(Dish dish:newList)
+				{
+					ctrDish.insertNew(dish);
+				}
 				win.dispose();
 			}
 		});

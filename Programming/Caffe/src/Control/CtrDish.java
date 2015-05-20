@@ -30,6 +30,11 @@ public class CtrDish {
           return  dbDish.updateDish(dish);
           
       }
+      public void insertOrder(Dish dishObj)
+      {
+           IFDBDish dbDish = new DBDish();
+           dbDish.insertDish(dishObj);
+      }
       public void insertNew(Dish dishObj)
       {
            IFDBDish dbDish = new DBDish();
