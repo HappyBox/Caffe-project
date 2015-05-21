@@ -13,6 +13,11 @@ public class Customer {
 	{
 		bill = 0;
 	}
+	public void reset()
+	{
+		orders.clear();
+		bill = 0;
+	}
 	public void removeDish(int i)
 	{
 		bill -= orders.get(i).getPrice();

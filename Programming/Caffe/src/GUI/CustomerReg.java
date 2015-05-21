@@ -48,7 +48,7 @@ public class CustomerReg extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CustomerReg(Employee emp, CtrTable ctrTable1, CtrTable ctrTable2, CtrTable ctrTable3) {
+	public CustomerReg(Employee emp, CtrTable ctrTable) {
 		setTitle("Logged in as " + emp.getName());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 286, 147);
@@ -75,7 +75,7 @@ public class CustomerReg extends JFrame {
 					Customer cus = ctrCus.findByPhone(textField.getText());
 					if(cus.getPhone().intern() == textField.getText().intern())
 					{
-						Table table = new Table(emp, cus, ctrTable1, ctrTable2, ctrTable3);
+						Table table = new Table(emp, cus, ctrTable);
 						table.setVisible(true);
 						table.setLocationRelativeTo(null);
 						table.setTable(table);	    // to dispose window
@@ -110,7 +110,7 @@ public class CustomerReg extends JFrame {
 				cus.setName("none");
 				cus.setPhone("00000000");
 				cus.setAddress("Sofiendalsvej60");
-				Table table = new Table(emp, cus, ctrTable1, ctrTable2, ctrTable3);
+				Table table = new Table(emp, cus, ctrTable);
 				table.setVisible(true);
 				table.setLocationRelativeTo(null);
 				table.setTable(table);	    // to dispose window

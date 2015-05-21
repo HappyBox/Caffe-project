@@ -57,6 +57,7 @@ public class Menu extends JFrame {
 	private JLabel label;
 	private JButton btnPay;
 	private JButton btnOk;
+	private Integer bill;
 	private ArrayList<Dish> newList = new ArrayList<Dish>();
 	/**
 	 * Launch the application.
@@ -79,8 +80,10 @@ public class Menu extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Menu(Customer cus, CtrTable ctrTable) {
-
+	public Menu(int tableNumber, CtrTable ctrTable) {
+		
+		bill = 0;
+		Customer cus = ctrTable.getCustomer(tableNumber);
 		setTitle("Customer: " + cus.getName());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -280,7 +283,8 @@ public class Menu extends JFrame {
 		btnPay = new JButton("Pay");
 		btnPay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ctrTable.setCustomer(false);
+				ctrTable.setCustomer(tableNumber, false);
+				ctrTable.getCustomer(tableNumber).reset();
 				win.dispose();
 			}
 		});
@@ -317,8 +321,11 @@ public class Menu extends JFrame {
 		label.setText("In total: " + cus.getBill());
 		for(Dish dish:newList)
 		{
+			bill = bill + dish.getPrice();
 			listControl.addElement(format(dish.getName())+dish.getPrice()+" kr");
 		}
+		bill += cus.getBill();
+		label.setText("In total: " + bill);
 	}
 	public void setWindow(Menu win)
 	{

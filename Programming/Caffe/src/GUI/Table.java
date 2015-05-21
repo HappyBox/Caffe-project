@@ -42,7 +42,8 @@ public class Table extends JFrame {
 	private JButton button_8;
 	private JButton button_12;
 	private JButton button_13;
-	public Table(Employee emp, Customer cus, CtrTable ctrTable1, CtrTable ctrTable2, CtrTable ctrTable3) {
+	private JButton btnDriver;
+	public Table(Employee emp, Customer cus, CtrTable ctrTable) {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setBounds(100, 100, 416, 291);
 		this.setTitle("Employee: " + emp.getName() + " customer: " + cus.getName());
@@ -170,25 +171,6 @@ public class Table extends JFrame {
 		button_13.setBounds(85, 161, 52, 23);
 		panel.add(button_13);
 		
-		button_21 = new JButton("21");
-		button_21.setBounds(340, 113, 50, 23);
-		button_21.addActionListener(new java.awt.event.ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				if(ctrTable1.customerIsSet() == false)
-				{
-					ctrTable1.addCustomer(cus);
-				}
-				ctrTable1.setTable(1);
-				Menu menu = new Menu(ctrTable1.getCustomer(), ctrTable1);
-				menu.setVisible(true);
-				menu.setLocationRelativeTo(null);
-				menu.setWindow(menu);
-				//menu.setList(tableList1);
-			}});
-		
 		button_14 = new JButton("14");
 		button_14.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -236,12 +218,11 @@ public class Table extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if(ctrTable3.customerIsSet() == false)
+				if(ctrTable.customerIsSet(19) == false)
 				{
-					ctrTable3.addCustomer(cus);
+					ctrTable.addCustomer(19,cus);
 				}
-				ctrTable3.setTable(1);
-				Menu menu = new Menu(ctrTable3.getCustomer(), ctrTable3);
+				Menu menu = new Menu(19, ctrTable);
 				menu.setVisible(true);
 				menu.setLocationRelativeTo(null);
 				menu.setWindow(menu);
@@ -255,20 +236,41 @@ public class Table extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if(ctrTable2.customerIsSet() == false)
+				if(ctrTable.customerIsSet(20) == false)
 				{
-					ctrTable2.addCustomer(cus);
+					ctrTable.addCustomer(20,cus);
 				}
-				ctrTable2.setTable(1);
-				Menu menu = new Menu(ctrTable2.getCustomer(), ctrTable2);
+				Menu menu = new Menu(20, ctrTable);
 				menu.setVisible(true);
 				menu.setLocationRelativeTo(null);
 				menu.setWindow(menu);
 			}});
 		panel.add(button_20);
+
+		button_21 = new JButton("21");
+		button_21.setBounds(340, 113, 50, 23);
+		button_21.addActionListener(new java.awt.event.ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				if(ctrTable.customerIsSet(21) == false)
+				{
+					ctrTable.addCustomer(21,cus);
+				}
+				Menu menu = new Menu(21, ctrTable);
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				menu.setWindow(menu);
+				//menu.setList(tableList1);
+			}});
 		panel.add(button_21);
 		btnKitchen.setBounds(213, 59, 82, 125);
 		panel.add(btnKitchen);
+		
+		btnDriver = new JButton("Driver");
+		btnDriver.setBounds(301, 161, 89, 23);
+		panel.add(btnDriver);
 		
 		changeOwner = new JCheckBox("Allow to change customer");
 		changeOwner.setBounds(10, 219, 278, 23);

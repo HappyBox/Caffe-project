@@ -46,11 +46,9 @@ public class Start extends JFrame {
 							Employee employee = ctrEmp.findByPassword(password.getText());
 							if(employee.getPassword().intern() == password.getText().intern())
 							{
-								CtrTable ctrTable1 = new CtrTable();
-								CtrTable ctrTable2 = new CtrTable();
-								CtrTable ctrTable3 = new CtrTable();
-								ctrTable1.addEmployee(employee);
-								CustomerReg cusReg = new CustomerReg(employee, ctrTable1, ctrTable2, ctrTable3);
+								CtrTable ctrTable = new CtrTable();
+								ctrTable.addEmployee(employee);
+								CustomerReg cusReg = new CustomerReg(employee, ctrTable);
 								cusReg.setVisible(true);
 								cusReg.setLocationRelativeTo(null);	
 							}

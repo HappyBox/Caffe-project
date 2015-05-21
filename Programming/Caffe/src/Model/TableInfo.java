@@ -6,29 +6,41 @@ public class TableInfo {
 
 	private Integer num;
 	private Customer cus;
-	private ArrayList<Dish> foodList = new ArrayList<Dish>();
-	public TableInfo(int num)
+	private Employee emp;
+	private boolean customerSet = false;
+	public TableInfo()
 	{
-		this.num = num;
 	}
-	public void setCustomer(Customer cus)
+	public void addCus(Customer cus)
 	{
 		this.cus = cus;
 	}
-	public int getNum()
+	public void addEmp(Employee emp)
 	{
-		return num;
+		this.emp = emp;
 	}
-	public ArrayList<Dish> getList()
+	public void setCus(boolean v)
 	{
-		return foodList;
+		customerSet = v;
+	}
+	public boolean cusIsSet()
+	{
+		return customerSet;
+	}
+	public Customer getCus()
+	{
+		return cus;
+	}
+	//public ArrayList<Dish> getList()
+	{
+		//return foodList;
 	}
 	public void addDish(Dish dish)
 	{
-		foodList.add(dish);
+		//foodList.add(dish);
 	}
 	public void removeDish(Dish dish)
 	{
-		foodList.remove(dish);
+		//foodList.remove(dish);
 	}
 }
