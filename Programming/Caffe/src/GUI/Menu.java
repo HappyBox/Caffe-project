@@ -283,8 +283,13 @@ public class Menu extends JFrame {
 		btnPay = new JButton("Pay");
 		btnPay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(tableNumber == 0)
+				{
+					// send Email
+				}
 				ctrTable.setCustomer(tableNumber, false);
 				ctrTable.getCustomer(tableNumber).reset();
+				
 				win.dispose();
 			}
 		});
