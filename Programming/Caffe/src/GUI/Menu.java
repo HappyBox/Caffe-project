@@ -317,6 +317,7 @@ public class Menu extends JFrame {
 	}
 	public void print(Customer cus)
 	{
+		bill = 0;
 		ArrayList<Dish> orders = cus.getOrders();
 		listControl.clear();
 		for(Dish dish:orders)
