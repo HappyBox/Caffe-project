@@ -1,19 +1,17 @@
 package GUI;
 
-import Control.*;
-import Model.*;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-
-import javax.swing.JButton;
-
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import javax.swing.JCheckBox;
+import Control.CtrTable;
+import Model.Customer;
+import Model.Employee;
 
 public class Table extends JFrame {
 	private JButton button_21;
@@ -433,6 +431,14 @@ public class Table extends JFrame {
 		
 		btnDriver = new JButton("Driver");
 		btnDriver.setBounds(301, 161, 89, 23);
+		btnDriver.addActionListener(new java.awt.event.ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				DriverMenu driverMenu = new DriverMenu();
+				driverMenu.setVisible(true);
+				driverMenu.setLocationRelativeTo(null);
+			}
+			
+		});
 		panel.add(btnDriver);
 		
 		changeOwner = new JCheckBox("Allow to change customer");
