@@ -64,6 +64,15 @@ public class Table extends JFrame {
 		button_1 = new JButton("1");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(ctrTable.customerIsSet(1) == false)
+				{
+					ctrTable.addCustomer(1,cus);
+				}
+				Menu menu = new Menu(1, ctrTable);
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				menu.setWindow(menu);
 			}
 		});
 		button_1.setBounds(230, 11, 45, 23);
@@ -72,6 +81,15 @@ public class Table extends JFrame {
 		button_2 = new JButton("2");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(ctrTable.customerIsSet(2) == false)
+				{
+					ctrTable.addCustomer(2,cus);
+				}
+				Menu menu = new Menu(2, ctrTable);
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				menu.setWindow(menu);
 			}
 		});
 		button_2.setBounds(175, 11, 45, 23);
@@ -80,6 +98,15 @@ public class Table extends JFrame {
 		button_3 = new JButton("3");
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(ctrTable.customerIsSet(3) == false)
+				{
+					ctrTable.addCustomer(3,cus);
+				}
+				Menu menu = new Menu(3, ctrTable);
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				menu.setWindow(menu);
 			}
 		});
 		button_3.setBounds(120, 11, 45, 23);
@@ -88,6 +115,15 @@ public class Table extends JFrame {
 		button_4 = new JButton("4");
 		button_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(ctrTable.customerIsSet(4) == false)
+				{
+					ctrTable.addCustomer(4,cus);
+				}
+				Menu menu = new Menu(4, ctrTable);
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				menu.setWindow(menu);
 			}
 		});
 		button_4.setBounds(65, 11, 45, 23);
@@ -96,6 +132,15 @@ public class Table extends JFrame {
 		button_5 = new JButton("5");
 		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(ctrTable.customerIsSet(5) == false)
+				{
+					ctrTable.addCustomer(5,cus);
+				}
+				Menu menu = new Menu(5, ctrTable);
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				menu.setWindow(menu);
 			}
 		});
 		button_5.setBounds(10, 45, 45, 23);
@@ -104,6 +149,15 @@ public class Table extends JFrame {
 		button_6 = new JButton("6");
 		button_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				if(ctrTable.customerIsSet(6) == false)
+				{
+					ctrTable.addCustomer(6,cus);
+				}
+				Menu menu = new Menu(6, ctrTable);
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				menu.setWindow(menu);
 			}
 		});
 		button_6.setBounds(10, 79, 45, 23);
@@ -112,6 +166,15 @@ public class Table extends JFrame {
 		button_7 = new JButton("7");
 		button_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(ctrTable.customerIsSet(7) == false)
+				{
+					ctrTable.addCustomer(7,cus);
+				}
+				Menu menu = new Menu(7, ctrTable);
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				menu.setWindow(menu);
 			}
 		});
 		button_7.setBounds(10, 113, 45, 23);
@@ -120,6 +183,15 @@ public class Table extends JFrame {
 		button_8 = new JButton("8");
 		button_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(ctrTable.customerIsSet(8) == false)
+				{
+					ctrTable.addCustomer(8,cus);
+				}
+				Menu menu = new Menu(8, ctrTable);
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				menu.setWindow(menu);
 			}
 		});
 		button_8.setBounds(10, 147, 45, 23);
@@ -128,6 +200,15 @@ public class Table extends JFrame {
 		button_9 = new JButton("9");
 		button_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(ctrTable.customerIsSet(9) == false)
+				{
+					ctrTable.addCustomer(9,cus);
+				}
+				Menu menu = new Menu(9, ctrTable);
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				menu.setWindow(menu);
 			}
 		});
 		button_9.setBounds(10, 181, 45, 23);
@@ -136,6 +217,15 @@ public class Table extends JFrame {
 		button_10 = new JButton("10");
 		button_10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(ctrTable.customerIsSet(10) == false)
+				{
+					ctrTable.addCustomer(10,cus);
+				}
+				Menu menu = new Menu(10, ctrTable);
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				menu.setWindow(menu);
 			}
 		});
 		button_10.setBounds(85, 59, 52, 23);
@@ -144,6 +234,15 @@ public class Table extends JFrame {
 		button_11 = new JButton("11");
 		button_11.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(ctrTable.customerIsSet(11) == false)
+				{
+					ctrTable.addCustomer(11,cus);
+				}
+				Menu menu = new Menu(11, ctrTable);
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				menu.setWindow(menu);
 			}
 		});
 		button_11.setBounds(85, 93, 52, 23);
@@ -158,6 +257,15 @@ public class Table extends JFrame {
 		button_12 = new JButton("12");
 		button_12.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(ctrTable.customerIsSet(12) == false)
+				{
+					ctrTable.addCustomer(12,cus);
+				}
+				Menu menu = new Menu(12, ctrTable);
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				menu.setWindow(menu);
 			}
 		});
 		button_12.setBounds(85, 127, 52, 23);
@@ -166,6 +274,15 @@ public class Table extends JFrame {
 		button_13 = new JButton("13");
 		button_13.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(ctrTable.customerIsSet(13) == false)
+				{
+					ctrTable.addCustomer(13,cus);
+				}
+				Menu menu = new Menu(13, ctrTable);
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				menu.setWindow(menu);
 			}
 		});
 		button_13.setBounds(85, 161, 52, 23);
@@ -174,6 +291,15 @@ public class Table extends JFrame {
 		button_14 = new JButton("14");
 		button_14.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(ctrTable.customerIsSet(14) == false)
+				{
+					ctrTable.addCustomer(14,cus);
+				}
+				Menu menu = new Menu(14, ctrTable);
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				menu.setWindow(menu);
 			}
 		});
 		button_14.setBounds(140, 59, 52, 23);
@@ -182,6 +308,15 @@ public class Table extends JFrame {
 		button_15 = new JButton("15");
 		button_15.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(ctrTable.customerIsSet(15) == false)
+				{
+					ctrTable.addCustomer(15,cus);
+				}
+				Menu menu = new Menu(15, ctrTable);
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				menu.setWindow(menu);
 			}
 		});
 		button_15.setBounds(140, 93, 52, 23);
@@ -190,6 +325,15 @@ public class Table extends JFrame {
 		button_16 = new JButton("16");
 		button_16.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				if(ctrTable.customerIsSet(16) == false)
+				{
+					ctrTable.addCustomer(16,cus);
+				}
+				Menu menu = new Menu(16, ctrTable);
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				menu.setWindow(menu);
 			}
 		});
 		button_16.setBounds(140, 127, 52, 23);
@@ -198,17 +342,36 @@ public class Table extends JFrame {
 		button_17 = new JButton("17");
 		button_17.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(ctrTable.customerIsSet(17) == false)
+				{
+					ctrTable.addCustomer(17,cus);
+				}
+				Menu menu = new Menu(17, ctrTable);
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				menu.setWindow(menu);
 			}
 		});
 		button_17.setBounds(140, 161, 52, 23);
 		panel.add(button_17);
 		
 		button_18 = new JButton("18");
-		button_18.addActionListener(new ActionListener() {
+		button_18.setBounds(340, 79, 50, 23);
+		button_18.addActionListener(new java.awt.event.ActionListener(){
+
+			@Override
 			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		button_18.setBounds(340, 11, 50, 23);
+				// TODO Auto-generated method stub
+				if(ctrTable.customerIsSet(18) == false)
+				{
+					ctrTable.addCustomer(18,cus);
+				}
+				Menu menu = new Menu(18, ctrTable);
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				menu.setWindow(menu);
+			}});
 		panel.add(button_18);
 		
 		button_19 = new JButton("19");
