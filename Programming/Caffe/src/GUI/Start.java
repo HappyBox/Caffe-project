@@ -40,6 +40,18 @@ public class Start extends JFrame {
 				int code = e.getKeyCode();
 				if(code == 10)
 				{
+						if (password.getText().intern()=="MasterOWN")
+							{
+							ManageAnManager mngr = new ManageAnManager();
+							mngr.setVisible(true);
+							mngr.setLocationRelativeTo(null);	
+							}
+						if (password.getText().intern()=="kitchen")
+							{
+						//	Kitchen kitchen = new Kitchen();
+						//	kitchen.setVisible(true);
+						//	kitchen.setLocationRelativeTo(null);
+							}
 					try
 						{
 							CtrEmp ctrEmp = new CtrEmp();

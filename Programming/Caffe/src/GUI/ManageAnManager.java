@@ -32,7 +32,7 @@ public class ManageAnManager extends JFrame{
 
 		public ManageAnManager() {
 
-		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setBounds(100, 100, 432, 355);
 		this.setTitle("Manage a manager");
 		
