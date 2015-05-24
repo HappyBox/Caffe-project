@@ -1,5 +1,7 @@
 package DataBase;
 
+import java.util.ArrayList;
+
 import Model.Dish;
 
 public interface IFDBOrder {
@@ -9,6 +11,6 @@ public interface IFDBOrder {
     //update information about an Dish
     public int updateDish(Dish dish);
     //delete dish
-    public int delete(String name);
-    
+    public int delete(Integer id);
+    public ArrayList<Dish> searchOne(Integer i);
 }

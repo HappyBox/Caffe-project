@@ -6,13 +6,14 @@ import Model.*;
 
 public class CtrTable {
 	private Integer number;
-	private Customer tempCus;
+	private GenerateID generate;
 	private Employee tempEmp;
 	private TableInfo table;
 	private boolean customerSet = false;
 	private ArrayList<TableInfo> tableCon = new ArrayList<TableInfo>();
-	public CtrTable()
+	public CtrTable(GenerateID generate)
 	{
+		this.generate = generate;
 		for(int i = 0; i<=21;i++)							// 0 for driver
 		{
 			table = new TableInfo();
@@ -44,16 +45,9 @@ public class CtrTable {
 	{
 		return tableCon.get(i).cusIsSet();
 	}
-	public void setTable(int num)
+	public GenerateID getGen()
 	{
-		if (table == null)
-		{
-			//table = new TableInfo(num);
-			System.out.println("new table set");
-		}
-		
-		//table.setCustomer(tempCus);
-		//tableCon.addTable(num,table);
+		return generate;
 	}
 	public TableInfo getTable(int num)
 	{

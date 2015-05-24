@@ -20,10 +20,9 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.awt.Window.Type;
 import javax.swing.ListSelectionModel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
-public class Kitchen extends JFrame{
+public class KitchenMeniu extends JFrame{
 	
 	private ArrayList<Dish> dishList;
 	private JPanel contentPane;
@@ -31,15 +30,14 @@ public class Kitchen extends JFrame{
 	private JButton btnRefresh;
 	private DefaultListModel listControl = new DefaultListModel();
 	private CtrDish ctrDish = new CtrDish();
-	private JPanel panel;
 	private JScrollPane scrollPane;
-	public Kitchen() {
-		setTitle("Kitchen");
+	public KitchenMeniu() {
+		setTitle("Ready");
 		setResizable(false);
 				
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 410, 177);
-		panel = new JPanel();
+		setBounds(100, 100, 265, 172);
+		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
@@ -50,11 +48,11 @@ public class Kitchen extends JFrame{
 				print();
 			}
 		});
-		btnRefresh.setBounds(297, 11, 89, 23);
+		btnRefresh.setBounds(160, 11, 89, 23);
 		panel.add(btnRefresh);
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 279, 124);
+		scrollPane.setBounds(10, 11, 140, 122);
 		panel.add(scrollPane);
 		
 		list = new JList(listControl);
@@ -66,8 +64,7 @@ public class Kitchen extends JFrame{
 		        if (evt.getClickCount() == 2) {
 		            // Double-click detected
 		            int index = list.locationToIndex(evt.getPoint());
-		            dishList.get(index).setAvailable(1);
-		            ctrDish.updateOrder(dishList.get(index).getId(), dishList.get(index).getName(), dishList.get(index).getPrice(), dishList.get(index).getAvailable());
+		            ctrDish.deleteOrder(dishList.get(index).getId());
 		            print();
 		        }
 		    }
@@ -77,7 +74,7 @@ public class Kitchen extends JFrame{
 	public void print()
 	{
 		listControl.clear();
-		dishList = ctrDish.findOne(0);
+		dishList = ctrDish.findOne(1);
 		for(int i = 0; i<dishList.size(); i++)
 		{
 			listControl.addElement(dishList.get(i).getName());

@@ -46,8 +46,8 @@ public class CustomerReg2 extends JFrame {
 	 * Create the frame.
 	 */
 	public CustomerReg2() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 358, 138);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 370, 154);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -111,7 +111,7 @@ public class CustomerReg2 extends JFrame {
 				win.dispose();
 			}
 		});
-		btnBack.setBounds(262, 86, 89, 23);
+		btnBack.setBounds(258, 86, 89, 23);
 		contentPane.add(btnBack);
 		
 		btnFind = new JButton("Find");

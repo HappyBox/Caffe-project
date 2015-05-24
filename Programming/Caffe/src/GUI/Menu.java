@@ -85,7 +85,7 @@ public class Menu extends JFrame {
 		bill = 0;
 		Customer cus = ctrTable.getCustomer(tableNumber);
 		setTitle("Customer: " + cus.getName());
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -272,7 +272,8 @@ public class Menu extends JFrame {
 				oldnew(cus);
 				for(Dish dish:newList)
 				{
-					ctrDish.insertNew(dish);
+					dish.setId(ctrTable.getGen().genID());
+					ctrDish.insertOrder(dish);
 				}
 				win.dispose();
 			}
@@ -286,6 +287,8 @@ public class Menu extends JFrame {
 				if(tableNumber == 0)
 				{
 					// send Email
+					//Driver driver = new Driver();
+					
 				}
 				ctrTable.setCustomer(tableNumber, false);
 				ctrTable.getCustomer(tableNumber).reset();

@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import Model.Dish;
 
@@ -16,21 +17,15 @@ public class DBOrder implements IFDBOrder{
     }
   
   //get one Dish having the name
-    public Dish searchByName(String name, boolean retriveAssociation)
-    {   String wClause = "  dName = '" + name + "'";
-        return singleWhere(wClause, retriveAssociation);
-    }
-     //insert a new Dish
+    //insert a new Dish
     public int insertDish(Dish dish)
     {  
        int rc = -1;
-	   String query="INSERT INTO Dish(d_id, dName, dIn, dCost, dPrice, dAvailable) VALUES('"+
-		   dish.getId() + "','"  +
+	   String query="INSERT INTO Orders(Name, Price, ready, id) VALUES('"+
 			   dish.getName()  + "','"  +
-			   		dish.getInfo() + "','" +
-			   			dish.getCost() + "','" +
-			   				dish.getPrice() + "','"+
-			   					dish.getAvailable() + "')" ;
+	   				dish.getPrice() + "','"+
+	   					dish.getAvailable() + "','"+
+	   						dish.getId() +"')";
 
        try{ // insert new Dish
           con.setAutoCommit(false);
@@ -62,21 +57,21 @@ public class DBOrder implements IFDBOrder{
 		Dish DishObj  = Dish;
 		int rc=-1;
 
-		String query="UPDATE Dish SET "+
-		"d_id ='"+ DishObj.getId() + "'," +
-			"dName ='"+ DishObj.getName()+"', "+
-				"dIn ='"+ DishObj.getInfo() + "', " +
-					"dCost ='"+ DishObj.getCost() + "', " +
-						"dPrice='"+ DishObj.getPrice() + "', "+
-							"dAvailable='"+ DishObj.getAvailable() + "' "+				
-									"WHERE dName = '"+ DishObj.getName() + "'";
+		String query="UPDATE Orders SET "+
+			"Name ='"+ DishObj.getName()+"', "+
+						"Price='"+ DishObj.getPrice() + "', "+                    //incase of error remove ' '
+							"ready='"+ DishObj.getAvailable() + "', "+	
+								"id='"+ DishObj.getId() + "' "+                   //incase of error remove ' '
+									"WHERE id = '"+ DishObj.getId() + "'";
                 System.out.println("Update query:" + query);
   		try{ // update Dish
+  			con.setAutoCommit(false);                                           //remove?
 	 		Statement stmt = con.createStatement();
 	 		stmt.setQueryTimeout(5);
 	 	 	rc = stmt.executeUpdate(query);
-
 	 	 	stmt.close();
+	 	 	con.commit();
+	        con.setAutoCommit(true);
 		}//end try
 	 	catch(Exception ex){
 	 	 	System.out.println("Update exception in Dish db: "+ex);
@@ -84,18 +79,21 @@ public class DBOrder implements IFDBOrder{
 		return(rc);
 	}
 	
-	public int delete(String name)
+	public int delete(Integer id)
 	{
                int rc=-1;
 	  
-	  	String query="DELETE FROM Dish WHERE dName = '" +
-				name + "'";
+	  	String query="DELETE FROM Orders WHERE id = '" +
+				id + "'";
                 System.out.println(query);
 	  	try{ // delete from Dish
+	  		con.setAutoCommit(false);
 	 		Statement stmt = con.createStatement();
 	 		stmt.setQueryTimeout(5);
 	 	  	rc = stmt.executeUpdate(query);
 	 	  	stmt.close();
+	 	  	con.commit();
+	        con.setAutoCommit(true);
   		}//end try	
    	        catch(Exception ex){
 	 	  	System.out.println("Delete exception in Dish db: "+ex);
@@ -104,32 +102,33 @@ public class DBOrder implements IFDBOrder{
 	}
 	
 		
-	private Dish singleWhere(String wClause, boolean retrieveAssociation)
+	private ArrayList<Dish> singleWhere(String wClause, boolean retrieveAssociation)
 	{
 		ResultSet results;
 		Dish DishObj = new Dish();
-                
+        ArrayList<Dish> dishList = new ArrayList<Dish>();
 	        String query =  buildQuery(wClause);
                 System.out.println(query);
 		try{ // read the Dish from the database
 	 		Statement stmt = con.createStatement();
 	 		stmt.setQueryTimeout(5);
 	 		results = stmt.executeQuery(query);
-	 		
-	 		if( results.next() ){
-                            DishObj = buildDish(results);
-                            stmt.close();
+	 		while( results.next() ){
+	 			
+                DishObj = buildDish(results);
+                dishList.add(DishObj);
 	 		}
+	 		stmt.close();
 		}//end try	
 	 	catch(Exception ex){
 	 		System.out.println("Query exception: "+ex);
 	 	}
-		return DishObj;
+		return dishList;
 	}
 	//method to build the query
 	private String buildQuery(String wClause)
 	{
-	    String query="SELECT d_id, dName, dIn, dCost, dPrice, dAvailable FROM Dish";
+	    String query="SELECT Name, Price, ready, id FROM Orders";
 		if (wClause.length()>0)
 			query=query+" WHERE "+ wClause;
 			
@@ -139,12 +138,10 @@ public class DBOrder implements IFDBOrder{
 	private Dish buildDish(ResultSet results)
       {   Dish DishObj = new Dish();
           try{ // the columns from the table Dish  are used
-        	  DishObj.setId(Integer.valueOf(results.getString("d_id")));
-        	  DishObj.setName(results.getString("dName"));
-        	  DishObj.setInfo(results.getString("dIn"));
-        	  DishObj.setCost(Integer.valueOf(results.getString("dCost")));
-        	  DishObj.setPrice(Integer.valueOf(results.getString("dPrice")));
-        	  DishObj.setAvailable(Integer.valueOf(results.getString("dAvailable")));
+        	  DishObj.setId(Integer.valueOf(results.getString("id")));
+        	  DishObj.setName(results.getString("Name"));
+        	  DishObj.setPrice(Integer.valueOf(results.getString("Price")));
+        	  DishObj.setAvailable(Integer.valueOf(results.getString("ready")));
         	 }
          catch(Exception e)
          {
@@ -152,7 +149,13 @@ public class DBOrder implements IFDBOrder{
          }
          return DishObj;
       }
-	
+
+	@Override
+	public ArrayList<Dish> searchOne(Integer i) {
+		// TODO Auto-generated method stub
+		String wClause = "ready = " + i;
+        return singleWhere(wClause, true);
+	}	
 }  
     
 

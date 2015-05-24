@@ -11,6 +11,7 @@ import Control.CtrEmp;
 import Control.CtrMngr;
 import Control.CtrTable;
 import Model.Employee;
+import Model.GenerateID;
 import Model.Manager;
 
 public class Start extends JFrame {
@@ -42,15 +43,15 @@ public class Start extends JFrame {
 				{
 						if (password.getText().intern()=="MasterOWN")
 							{
-							ManageAnManager mngr = new ManageAnManager();
-							mngr.setVisible(true);
-							mngr.setLocationRelativeTo(null);	
+								ManageAnManager mngr = new ManageAnManager();
+								mngr.setVisible(true);
+								mngr.setLocationRelativeTo(null);	
 							}
 						if (password.getText().intern()=="kitchen")
 							{
-						//	Kitchen kitchen = new Kitchen();
-						//	kitchen.setVisible(true);
-						//	kitchen.setLocationRelativeTo(null);
+								Kitchen kitchen = new Kitchen();
+								kitchen.setVisible(true);
+								kitchen.setLocationRelativeTo(null);
 							}
 					try
 						{
@@ -58,7 +59,8 @@ public class Start extends JFrame {
 							Employee employee = ctrEmp.findByPassword(password.getText());
 							if(employee.getPassword().intern() == password.getText().intern())
 							{
-								CtrTable ctrTable = new CtrTable();
+								GenerateID generate = new GenerateID();
+								CtrTable ctrTable = new CtrTable(generate);
 								ctrTable.addEmployee(employee);
 								CustomerReg cusReg = new CustomerReg(employee, ctrTable);
 								cusReg.setVisible(true);

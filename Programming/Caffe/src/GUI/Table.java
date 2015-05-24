@@ -42,7 +42,7 @@ public class Table extends JFrame {
 	private JButton button_13;
 	private JButton btnDriver;
 	public Table(Employee emp, Customer cus, CtrTable ctrTable) {
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setBounds(100, 100, 416, 291);
 		this.setTitle("Employee: " + emp.getName() + " customer: " + cus.getName());
 		
@@ -249,6 +249,9 @@ public class Table extends JFrame {
 		btnKitchen = new JButton("Kitchen");
 		btnKitchen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				KitchenMeniu kitchen = new KitchenMeniu();
+				kitchen.setVisible(true);
+				kitchen.setLocationRelativeTo(null);
 			}
 		});
 		
@@ -433,9 +436,14 @@ public class Table extends JFrame {
 		btnDriver.setBounds(301, 161, 89, 23);
 		btnDriver.addActionListener(new java.awt.event.ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				DriverMenu driverMenu = new DriverMenu();
-				driverMenu.setVisible(true);
-				driverMenu.setLocationRelativeTo(null);
+				if(ctrTable.customerIsSet(0) == false)
+				{
+					ctrTable.addCustomer(0,cus);
+				}
+				Menu menu = new Menu(0, ctrTable);
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				menu.setWindow(menu);
 			}
 			
 		});
