@@ -9,11 +9,11 @@ import javax.swing.JFrame;
 
 public class ManagerGUI extends JFrame{
 	public static String title="Manager";
-
+	Control.CtrTable CtrTable = new Control.CtrTable();
 	public ManagerGUI() {
 		getContentPane().setLayout(null);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setBounds(100, 100, 225, 233);
+		this.setBounds(100, 100, 225, 313);
 		this.setTitle(title);
 		
 		JButton btnManageAnEmployee = new JButton("Manage an employee");
@@ -30,6 +30,11 @@ public class ManagerGUI extends JFrame{
 		btnUpdateTheCompany.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		btnUpdateTheCompany.setBounds(0, 129, 225, 71);
 		getContentPane().add(btnUpdateTheCompany);
+		
+		JButton buttonOrder = new JButton("Order");
+		buttonOrder.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		buttonOrder.setBounds(0, 212, 225, 71);
+		getContentPane().add(buttonOrder);
 	
 	/*
 	 * Buttons Functionality
@@ -57,6 +62,13 @@ public class ManagerGUI extends JFrame{
 			UpdateTheCompany UpdateTheCompany = new UpdateTheCompany();
 			UpdateTheCompany.setVisible(true);
 			UpdateTheCompany.setLocationRelativeTo(null);
+		}
+	});
+	buttonOrder.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent event) {
+			Menu menu = new Menu(Integer,CtrTable));
+			menu.setVisible(true);
+			menu.setLocationRelativeTo(null);
 		}
 	});
 	}
