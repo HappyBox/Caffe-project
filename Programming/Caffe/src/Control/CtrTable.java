@@ -20,6 +20,10 @@ public class CtrTable {
 			tableCon.add(table);
 		}
 	}
+	public CtrTable() {
+		table = new TableInfo();
+		tableCon.add(table);
+	}
 	public void addEmployee(Employee emp)
 	{
 		for(int i = 0; i<=21;i++)							// 0 for driver

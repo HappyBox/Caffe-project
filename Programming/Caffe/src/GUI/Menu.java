@@ -287,7 +287,8 @@ public class Menu extends JFrame {
 				if(tableNumber == 0)
 				{
 					// send Email
-					//Driver driver = new Driver();
+					Driver driver = new Driver();
+					driver.email();
 					
 				}
 				ctrTable.setCustomer(tableNumber, false);

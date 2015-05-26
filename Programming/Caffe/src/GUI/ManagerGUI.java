@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import Control.CtrTable;
+
 public class ManagerGUI extends JFrame{
 	public static String title="Manager";
 	Control.CtrTable CtrTable = new Control.CtrTable();
@@ -66,7 +68,7 @@ public class ManagerGUI extends JFrame{
 	});
 	buttonOrder.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent event) {
-			Menu menu = new Menu(Integer,CtrTable));
+			Menu menu = new Menu(0,CtrTable);
 			menu.setVisible(true);
 			menu.setLocationRelativeTo(null);
 		}

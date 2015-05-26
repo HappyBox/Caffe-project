@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class DriverMenu extends JFrame {
-private String address;
+private static String address;
 private JTextField textAddress;
 
 public DriverMenu(){
@@ -39,7 +39,7 @@ public DriverMenu(){
 			});
 		getContentPane().add(btnOk);
 	}
-		public String getAddress()
+		public static String getAddress()
 			{
 				return address;
 			}
