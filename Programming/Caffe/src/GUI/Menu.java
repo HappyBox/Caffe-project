@@ -287,9 +287,9 @@ public class Menu extends JFrame {
 				if(tableNumber == 0)
 				{
 					// send Email
-					Driver driver = new Driver();
-					driver.email();
-					
+				DriverMenu drivermenu = new DriverMenu();
+				drivermenu.setVisible(true);
+				drivermenu.setLocationRelativeTo(null);
 				}
 				ctrTable.setCustomer(tableNumber, false);
 				ctrTable.getCustomer(tableNumber).reset();

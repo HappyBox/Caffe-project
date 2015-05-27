@@ -14,7 +14,7 @@ private JTextField textAddress;
 public DriverMenu(){
 		
 		
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
 		this.setBounds(100, 100, 416, 122);
 		getContentPane().setLayout(null);
 		
@@ -35,6 +35,8 @@ public DriverMenu(){
 				public void actionPerformed(ActionEvent e) 
 					{
 					address = textAddress.getText();
+					Driver driver = new Driver();
+					driver.email(address);
 					}
 			});
 		getContentPane().add(btnOk);
@@ -43,4 +45,9 @@ public DriverMenu(){
 			{
 				return address;
 			}
+		 public static void main(String[] args) {
+			 	DriverMenu menu = new DriverMenu();
+			 	menu.setVisible(true);
+			 	menu.setLocationRelativeTo(null);
+		 }
 }

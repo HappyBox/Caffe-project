@@ -16,8 +16,11 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.util.ByteArrayDataSource;
 
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
  
@@ -25,11 +28,12 @@ import com.itextpdf.text.pdf.PdfWriter;
  * Email with PDF example.
  */
 public class Driver {
-     
-    /**
+
+	/**
      * Sends an email with a PDF attachment.
+	 * @param address 
      */
-    public void email() {
+    public void email(String address) {
         String smtpHost = "smtp.gmail.com"; //replace this with a valid host
         final String username = "pizza4driver@gmail.com";
         final String password = "pizzalounge";
@@ -121,7 +125,9 @@ public class Driver {
         document.addCreator("PizzaLounge");
          
         Paragraph paragraph = new Paragraph();
-        paragraph.add(new Chunk("Address:" + DriverMenu.getAddress()));
+        String address = DriverMenu.getAddress();
+       
+        paragraph.add(new Chunk("You have a new order!" + " Address: " + address));
         document.add(paragraph);
         
         document.close();
@@ -129,6 +135,5 @@ public class Driver {
      
     public static void main(String[] args) {
         Driver driver = new Driver();
-        driver.email();
     }
 }
