@@ -70,10 +70,10 @@ public class ManagerGUI extends JFrame{
 	});
 	buttonOrder.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent event) {
-			Manager Mngr = new Manager();
-			CustomerRegManager customerRegMngr = new CustomerRegManager(Mngr ,ctrTable);
-			customerRegMngr.setVisible(true);
-			customerRegMngr.setLocationRelativeTo(null);
+			Employee emp = new Employee();
+			CustomerReg customerReg = new CustomerReg(emp ,ctrTable);
+			customerReg.setVisible(true);
+			customerReg.setLocationRelativeTo(null);
 		}
 	});
 	}
