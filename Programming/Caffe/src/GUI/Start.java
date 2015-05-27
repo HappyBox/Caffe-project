@@ -19,6 +19,9 @@ public class Start extends JFrame {
 	private JLabel lblError;
 	public Start() {
 		
+		GenerateID generate = new GenerateID();
+		CtrTable ctrTable = new CtrTable(generate);
+		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setBounds(100, 100, 200, 100);
 		this.setTitle("Login");
@@ -59,8 +62,6 @@ public class Start extends JFrame {
 							Employee employee = ctrEmp.findByPassword(password.getText());
 							if(employee.getPassword().intern() == password.getText().intern())
 							{
-								GenerateID generate = new GenerateID();
-								CtrTable ctrTable = new CtrTable(generate);
 								ctrTable.addEmployee(employee);
 								CustomerReg cusReg = new CustomerReg(employee, ctrTable);
 								cusReg.setVisible(true);
