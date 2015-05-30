@@ -138,6 +138,13 @@ public class Menu extends JFrame {
 		mntmMushrooms = new JMenuItem("Mushrooms");
 		mntmMushrooms.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Dish dish = new Dish();
+				dish.setName("Mushrooms");
+				dish.setPrice(10);
+				dish.setAvailable(0);
+				newList.add(dish);
+				//cus.addDish(dish);
+				print(cus);
 			}
 		});
 		mnSoups.add(mntmMushrooms);
@@ -148,6 +155,13 @@ public class Menu extends JFrame {
 		mntmMargarita = new JMenuItem("Margarita");
 		mntmMargarita.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Dish dish = new Dish();
+				dish.setName("Margarita");
+				dish.setPrice(35);
+				dish.setAvailable(0);
+				newList.add(dish);
+				//cus.addDish(dish);
+				print(cus);
 			}
 		});
 		mnPizzas.add(mntmMargarita);
@@ -169,6 +183,13 @@ public class Menu extends JFrame {
 		mntmFormagio = new JMenuItem("Formagio");
 		mntmFormagio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			Dish dish = new Dish();
+			dish.setName("Formagio");
+			dish.setPrice(69);
+			dish.setAvailable(0);
+			newList.add(dish);
+			//cus.addDish(dish)
+			print(cus);
 			}
 		});
 		mnPizzas.add(mntmFormagio);
@@ -181,7 +202,7 @@ public class Menu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Dish dish = new Dish();
 				dish.setName("Cola");
-				dish.setPrice(5);
+				dish.setPrice(20);
 				dish.setAvailable(0);
 				newList.add(dish);
 				//cus.addDish(dish);
@@ -193,6 +214,14 @@ public class Menu extends JFrame {
 		mntmVine = new JMenuItem("Vine");
 		mntmVine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Dish dish = new Dish();
+				dish.setName("Vine");
+				dish.setPrice(30);
+				dish.setAvailable(0);
+				newList.add(dish);
+				//cus.addDish(dish);
+				print(cus);
+				
 			}
 		});
 		mnDrinks.add(mntmVine);
@@ -200,6 +229,13 @@ public class Menu extends JFrame {
 		mntmBeer = new JMenuItem("Beer");
 		mntmBeer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Dish dish = new Dish();
+				dish.setName("Beer");
+				dish.setPrice(25);
+				dish.setAvailable(0);
+				newList.add(dish);
+				//cus.addDish(dish);
+				print(cus);
 			}
 		});
 		mnDrinks.add(mntmBeer);
@@ -210,6 +246,13 @@ public class Menu extends JFrame {
 		mntmIceCream = new JMenuItem("Ice cream");
 		mntmIceCream.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Dish dish = new Dish();
+				dish.setName("Ice cream");
+				dish.setPrice(20);
+				dish.setAvailable(0);
+				newList.add(dish);
+				//cus.addDish(dish);
+				print(cus);
 			}
 		});
 		mnDeserts.add(mntmIceCream);
@@ -233,6 +276,17 @@ public class Menu extends JFrame {
 		
 		mntmDrink = new JMenuItem("Drink");
 		mnMealOfA.add(mntmDrink);
+		mntmDrink.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+			Dish dish = new Dish();
+			dish.setName("Drink");
+			dish.setPrice(15);
+			dish.setAvailable(0);
+			newList.add(dish);
+			//cus.addDish(dish);
+			print(cus);
+			}
+		});
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 27, 414, 139);
