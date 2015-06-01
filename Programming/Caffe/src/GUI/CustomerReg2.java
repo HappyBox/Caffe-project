@@ -87,7 +87,7 @@ public class CustomerReg2 extends JFrame {
 		btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(name.getText().length() > 0 && address.getText().length() > 0 && phone.getText().length() > 0)
+				if(name.getText().length() > 0 && address.getText().length() < 15 && phone.getText().length() == 8)
 				{
 					CtrCus ctrCus = new CtrCus();
 					int x = ctrCus.createCustomer(name.getText(), address.getText(), phone.getText());
@@ -98,7 +98,7 @@ public class CustomerReg2 extends JFrame {
 				}
 				else
 				{
-					lblError.setText("fill all fiels");
+					lblError.setText("fill all fiels correctly");
 				}
 			}
 		});

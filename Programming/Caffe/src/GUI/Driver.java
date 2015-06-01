@@ -74,7 +74,6 @@ public class Driver {
             //construct the text body part
             MimeBodyPart textBodyPart = new MimeBodyPart();
             textBodyPart.setText("Address: " + cus.getAddress() +"\n"+ getContent(cus.getOrders()) );
-            System.out.println(cus.getOrders());
             //now write the PDF content to the output stream
             outputStream = new ByteArrayOutputStream();
             writePdf(outputStream);

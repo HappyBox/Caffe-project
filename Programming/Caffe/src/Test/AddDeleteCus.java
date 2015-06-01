@@ -16,7 +16,5 @@ public class AddDeleteCus {
 		{
 			System.out.println("customer NOT added");
 		}
-		
 	}
-
 }
