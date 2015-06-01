@@ -47,6 +47,7 @@ public class Table extends JFrame {
 	 * @wbp.parser.constructor
 	 */
 	public Table(Employee emp, Customer cus, CtrTable ctrTable) {
+
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setBounds(100, 100, 416, 291);
 		this.setTitle("Employee: " + emp.getName() + " customer: " + cus.getName());

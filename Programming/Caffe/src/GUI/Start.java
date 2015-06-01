@@ -44,55 +44,65 @@ public class Start extends JFrame {
 				int code = e.getKeyCode();
 				if(code == 10)
 				{
-						if (password.getText().intern()=="MasterOWN")
-							{
-								ManageAnManager mngr = new ManageAnManager();
-								mngr.setVisible(true);
-								mngr.setLocationRelativeTo(null);	
-							}
-						if (password.getText().intern()=="kitchen")
-							{
-								Kitchen kitchen = new Kitchen();
-								kitchen.setVisible(true);
-								kitchen.setLocationRelativeTo(null);
-							}
+					boolean t = false;
+					if (password.getText().intern()=="MasterOWN")
+					{
+						ManageAnManager mngr = new ManageAnManager();
+						mngr.setVisible(true);
+						mngr.setLocationRelativeTo(null);
+						t = true;
+					}
+					if (password.getText().intern()=="kitchen")
+					{
+						Kitchen kitchen = new Kitchen();
+						kitchen.setVisible(true);
+						kitchen.setLocationRelativeTo(null);
+						t = true;
+					}
 					try
+					{
+						CtrEmp ctrEmp = new CtrEmp();
+						Employee employee = ctrEmp.findByPassword(password.getText());
+						if(employee.getPassword().intern() == password.getText().intern())
 						{
-							CtrEmp ctrEmp = new CtrEmp();
-							Employee employee = ctrEmp.findByPassword(password.getText());
-							if(employee.getPassword().intern() == password.getText().intern())
-							{
-								ctrTable.addEmployee(employee);
-								CustomerReg cusReg = new CustomerReg(employee, ctrTable);
-								cusReg.setVisible(true);
-								cusReg.setLocationRelativeTo(null);	
-							}
+							ctrTable.addEmployee(employee);
+							CustomerReg cusReg = new CustomerReg(employee, ctrTable);
+							cusReg.setVisible(true);
+							cusReg.setLocationRelativeTo(null);	
+							t = true;
 						}
-						catch(Exception as)
-							{
-								lblError.setText("Wrong password");
-							}
-					try 
-						{
-							CtrMngr ctrMngr = new CtrMngr();
-							Manager manager = ctrMngr.findByPassword(password.getText());
-							String text = password.getText();
-							System.out.println(text);
-							
-							if(manager.getPassword().intern() == password.getText().intern())
-							{
-								ManagerGUI managerGUI = new ManagerGUI();
-								managerGUI.setVisible(true);
-								managerGUI.setLocationRelativeTo(null);
-							
-							}
 					}
 					catch(Exception as)
 					{
-						lblError.setText("Wrong password");
+						System.out.println("employee access denied");
+					}
+					try 
+					{
+						CtrMngr ctrMngr = new CtrMngr();
+						Manager manager = ctrMngr.findByPassword(password.getText());							
+						if(manager.getPassword().intern() == password.getText().intern())
+						{
+							ManagerGUI managerGUI = new ManagerGUI();
+							managerGUI.setVisible(true);
+							managerGUI.setLocationRelativeTo(null);
+							t = true;
+						}
+					}
+					catch(Exception as)
+					{
+						System.out.println("manager access denied");
 					}
 					
+					if(t==false)
+					{
+						lblError.setText("Wrong password");
+					}
+					else
+					{
+						lblError.setText("Logged in");
+					}
 				}
+				
 			}
 
 			@Override

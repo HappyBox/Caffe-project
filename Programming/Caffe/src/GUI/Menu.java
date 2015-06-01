@@ -4,7 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -26,7 +32,6 @@ import Model.Dish;
 public class Menu extends JFrame {
 
 	private JPanel contentPane;
-	private CtrTable ctrTable;
 	private Menu win;
 	private JMenuBar menuBar;
 	private JMenu mnStarters;
@@ -140,7 +145,7 @@ public class Menu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Dish dish = new Dish();
 				dish.setName("Mushrooms");
-				dish.setPrice(10);
+				dish.setPrice(39);
 				dish.setAvailable(0);
 				newList.add(dish);
 				//cus.addDish(dish);
@@ -157,7 +162,7 @@ public class Menu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Dish dish = new Dish();
 				dish.setName("Margarita");
-				dish.setPrice(35);
+				dish.setPrice(50);
 				dish.setAvailable(0);
 				newList.add(dish);
 				//cus.addDish(dish);
@@ -183,13 +188,13 @@ public class Menu extends JFrame {
 		mntmFormagio = new JMenuItem("Formagio");
 		mntmFormagio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			Dish dish = new Dish();
-			dish.setName("Formagio");
-			dish.setPrice(69);
-			dish.setAvailable(0);
-			newList.add(dish);
-			//cus.addDish(dish)
-			print(cus);
+				Dish dish = new Dish();
+				dish.setName("Formagio");
+				dish.setPrice(69);
+				dish.setAvailable(0);
+				newList.add(dish);
+				//cus.addDish(dish);
+				print(cus);
 			}
 		});
 		mnPizzas.add(mntmFormagio);
@@ -202,7 +207,7 @@ public class Menu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Dish dish = new Dish();
 				dish.setName("Cola");
-				dish.setPrice(20);
+				dish.setPrice(15);
 				dish.setAvailable(0);
 				newList.add(dish);
 				//cus.addDish(dish);
@@ -216,12 +221,11 @@ public class Menu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Dish dish = new Dish();
 				dish.setName("Vine");
-				dish.setPrice(30);
+				dish.setPrice(120);
 				dish.setAvailable(0);
 				newList.add(dish);
 				//cus.addDish(dish);
 				print(cus);
-				
 			}
 		});
 		mnDrinks.add(mntmVine);
@@ -248,7 +252,7 @@ public class Menu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Dish dish = new Dish();
 				dish.setName("Ice cream");
-				dish.setPrice(20);
+				dish.setPrice(49);
 				dish.setAvailable(0);
 				newList.add(dish);
 				//cus.addDish(dish);
@@ -261,32 +265,32 @@ public class Menu extends JFrame {
 		menuBar.add(mnMealOfA);
 		
 		mntmDaySoup = new JMenuItem("Day soup");
-		mnMealOfA.add(mntmDaySoup);
 		mntmDaySoup.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Dish dish = new Dish();
 				dish.setName("Day soup");
-				dish.setPrice(25);
+				dish.setPrice(45);
 				dish.setAvailable(0);
 				newList.add(dish);
 				//cus.addDish(dish);
 				print(cus);
 			}
 		});
-		
+		mnMealOfA.add(mntmDaySoup);
+
 		mntmDrink = new JMenuItem("Drink");
-		mnMealOfA.add(mntmDrink);
-		mntmDrink.addActionListener(new ActionListener(){
+		mntmDrink.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			Dish dish = new Dish();
-			dish.setName("Drink");
-			dish.setPrice(15);
-			dish.setAvailable(0);
-			newList.add(dish);
-			//cus.addDish(dish);
-			print(cus);
+				Dish dish = new Dish();
+				dish.setName("Drink");
+				dish.setPrice(15);
+				dish.setAvailable(0);
+				newList.add(dish);
+				//cus.addDish(dish);
+				print(cus);
 			}
 		});
+		mnMealOfA.add(mntmDrink);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 27, 414, 139);
@@ -318,30 +322,24 @@ public class Menu extends JFrame {
 		btnOk = new JButton("Confirm");
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				CtrDish ctrDish = new CtrDish();
-				oldnew(cus);
-				for(Dish dish:newList)
-				{
-					dish.setId(ctrTable.getGen().genID());
-					ctrDish.insertOrder(dish);
-				}
+				confirm(cus,ctrTable);
 				win.dispose();
 			}
 		});
 		btnOk.setBounds(236, 228, 89, 23);
 		contentPane.add(btnOk);
 		
-		btnPay = new JButton("Pay");
+		btnPay = new JButton("Confirm & Pay");
 		btnPay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				confirm(cus,ctrTable);
 				if(tableNumber == 0)
 				{
-					CtrDish ctrDish = new CtrDish();
-					oldnew(cus);
-				// send Email
-				Driver driver = new Driver(cus);
-				driver.email();
+					// send Email
+					Driver driver = new Driver(cus);
+					driver.email();
 				}
+				saveInvoice(cus);
 				ctrTable.setCustomer(tableNumber, false);
 				ctrTable.getCustomer(tableNumber).reset();
 				
@@ -355,6 +353,16 @@ public class Menu extends JFrame {
 		label.setBounds(10, 188, 89, 14);
 		contentPane.add(label);
 		print(cus);
+	}
+	public void confirm(Customer cus, CtrTable ctrTable)
+	{
+		CtrDish ctrDish = new CtrDish();
+		oldnew(cus);
+		for(Dish dish:newList)
+		{
+			dish.setId(ctrTable.getGen().genID());
+			ctrDish.insertOrder(dish);
+		}
 	}
 	public String format(String name)
 	{
@@ -387,6 +395,36 @@ public class Menu extends JFrame {
 		}
 		bill += cus.getBill();
 		label.setText("In total: " + bill);
+	}
+	public void saveInvoice(Customer cus)
+	{
+		try {
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			Date date = new Date();
+			PrintWriter writer = new PrintWriter("invoice-"+cus.getPhone()+".txt", "UTF-8");
+			writer.println("     Pizza Lounge");
+			writer.println();
+			writer.println("----------------------");
+			for(Dish dish: cus.getOrders())
+			{
+				writer.println(dish.getName()+dish.getPrice());
+			}
+			writer.println("----------------------");
+			writer.println("Total: "+cus.getBill() + " kr");
+			writer.println("----------------------");
+			writer.println("Customer: ****"+ cus.getPhone().substring(4, 8));
+			writer.println("");
+			writer.println(dateFormat.format(date));
+			writer.println("");
+			writer.println("     Pizza Lounge*");
+			writer.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+		}
 	}
 	public void setWindow(Menu win)
 	{
