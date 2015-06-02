@@ -81,6 +81,7 @@ public class CustomerReg extends JFrame {
 						table.setLocationRelativeTo(null);
 						table.setTable(table);	    // to dispose window
 					}
+					System.out.println(cus.getPhone());
 				}
 				catch(Exception as)
 				{

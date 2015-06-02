@@ -96,6 +96,11 @@ public class Menu extends JFrame {
 		btnBack = new JButton("Cancel");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(newList.size()==0 && cus.getOrders().size()==0)
+				{
+					ctrTable.setCustomer(tableNumber, false);
+					ctrTable.getCustomer(tableNumber).reset();
+				}
 				win.dispose();
 			}
 		});
@@ -329,7 +334,7 @@ public class Menu extends JFrame {
 		btnOk.setBounds(236, 228, 89, 23);
 		contentPane.add(btnOk);
 		
-		btnPay = new JButton("Confirm & Pay");
+		btnPay = new JButton("Pay");
 		btnPay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				confirm(cus,ctrTable);
@@ -346,7 +351,7 @@ public class Menu extends JFrame {
 				win.dispose();
 			}
 		});
-		btnPay.setBounds(10, 228, 89, 23);
+		btnPay.setBounds(10, 228, 126, 23);
 		contentPane.add(btnPay);
 		
 		label = new JLabel("");
